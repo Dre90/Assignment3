@@ -38,6 +38,48 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Address</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="address" value="{{ old('address') }}">
+
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('postnr') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Post Number</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="postnr" value="{{ old('postnr') }}">
+
+                                @if ($errors->has('postnr'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('postnr') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('phonenumber') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Phonenumber</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}">
+
+                                @if ($errors->has('phonenumber'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phonenumber') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Password</label>
 
