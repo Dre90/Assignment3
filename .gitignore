@@ -45,3 +45,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+/vendor
+/node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
+.env
