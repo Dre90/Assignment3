@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         );
 
         $users = array(
-            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Skolegata', 'postnr' => 2819, 'phonenumber' => 12345678, 'userImage' => 'test.jpg'],
-            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Parkveien', 'postnr' => 7810, 'phonenumber' => 87654321, 'userImage' => 'test.jpg']
+            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Skolegata', 'postnr' => 1300, 'phonenumber' => 12345678, 'userImage' => 'test.jpg'],
+            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Parkveien', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'test.jpg']
         );
 
         $categories = array(
@@ -44,16 +44,16 @@ class DatabaseSeeder extends Seeder
         );
 
         $conversations = array(
-            ['interestedId' => '2', 'ownerId' => '1', 'itemId' => '1'],
-            ['interestedId' => '1', 'ownerId' => '2', 'itemId' => '3']
+            ['interestedId' => 2, 'ownerId' => 1, 'itemId' => 1],
+            ['interestedId' => 1, 'ownerId' => 2, 'itemId' => 2]
         );
 
         $messages = array(
-            ['body' => 'First sample text in conversation one', 'conversationId' => '1'],
-            ['body' => 'Second sample text in conversation one', 'conversationId' => '1'],
-            ['body' => 'First sample text in conversation two', 'conversationId' => '2'],
-            ['body' => 'Second sample text in conversation two', 'conversationId' => '2'],
-            ['body' => 'Third sample text in conversation two', 'conversationId' => '2']
+            ['body' => 'First sample text in conversation one', 'conversationId' => 1, 'userId' => 1],
+            ['body' => 'Second sample text in conversation one', 'conversationId' => 1, 'userId' => 2],
+            ['body' => 'First sample text in conversation two', 'conversationId' => 2, 'userId' => 2],
+            ['body' => 'Second sample text in conversation two', 'conversationId' => 2, 'userId' => 1],
+            ['body' => 'Third sample text in conversation two', 'conversationId' => 2, 'userId' => 2]
         );
 
         DB::table('posts')->delete();
@@ -86,11 +86,14 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert($categories);
         $this->command->info('Category table seeded!');
 
-        DB::table('conversations')->insert($conversations);
+        DB::table('items')->insert($items);
         $this->command->info('Items table seeded!');
 
+        DB::table('conversations')->insert($conversations);
+        $this->command->info('Conversations table seeded!');
+
         DB::table('messages')->insert($messages);
-        $this->command->info('Items table seeded!');
+        $this->command->info('Messages table seeded!');
 
     }
 }
