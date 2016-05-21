@@ -11,10 +11,10 @@ class Item extends Model
     }
 
     public function user() {
-      return $this->belongsTo(User::class, 'id');
+      return $this->belongsTo(User::class, 'userId', 'id');
     }
 
     public function conversation() {
-      return $this->hasMany(Conversation::class, 'id');
+      return $this->hasMany(Conversation::class, 'itemId', 'id');
     }
 }

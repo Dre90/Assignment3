@@ -15,10 +15,10 @@ class Conversation extends Model
   }
 
   public function item() {
-    return $this->belongsTo(Item::class, 'id');
+    return $this->belongsTo(Item::class, 'itemId', 'id');
   }
 
   public function message() {
-    return $this->hasMany(Message::class, 'id');
+    return $this->hasMany(Message::class, 'conversationId', 'id');
   }
 }

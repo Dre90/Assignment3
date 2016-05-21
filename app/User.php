@@ -37,8 +37,12 @@ class User extends Authenticatable
     }
 
 
-    public function conversation() {
-      return $this->hasMany(Conversation::class, 'id');
+    public function conversationAsOwner() {
+      return $this->hasMany(Conversation::class, 'ownerId', 'id');
+    }
+
+    public function conversationAsInterested() {
+      return $this->hasMany(Conversation::class, 'interestedId', 'id');
     }
 
     public function message() {
