@@ -16,6 +16,7 @@ class CreateMessagesTable extends Migration
             $table->increments('id');
             $table->text('body');
             $table->integer('conversationId')->unsigned()->index();
+            $table->integer('userId')->unsigned()->index();
             $table->timestamps();
         });
     }

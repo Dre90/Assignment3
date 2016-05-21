@@ -25,14 +25,15 @@ class ConstraintsUserItemConversationMessagesTabels extends Migration
 
         Schema::table('conversations', function(Blueprint $table)
         {
-            $table->foreign('fromUserId')->references('id')->on('users');
-            $table->foreign('toUserId')->references('id')->on('users');
+            $table->foreign('interestedId')->references('id')->on('users');
+            $table->foreign('ownerId')->references('id')->on('users');
             $table->foreign('itemId')->references('id')->on('items');
         });
 
         Schema::table('messages', function(Blueprint $table)
         {
             $table->foreign('conversationId')->references('Id')->on('conversations');
+            $table->foreign('userId')->references('Id')->on('users');
         });
 
     }
