@@ -40,9 +40,9 @@
                 <ul class="nav navbar-nav">-
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/home') }}">Home</a></li>
+                        <li><a href="{{ url('item/items') }}">Frontpage</a></li>
                     @else
-                        <li><a href="{{ url('/home') }}">Home</a></li>
+                        <li><a href="{{ url('item/items') }}">Frontpage</a></li>
                         <li><a href="{{ url('/addItem') }}">Add item</a></li>
                         <li><a href="{{ url('/Items') }}">Items</a></li>
                         <li><a href="{{ url('/Inbox') }}">Inbox</a></li>
