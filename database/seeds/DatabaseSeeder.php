@@ -49,19 +49,11 @@ class DatabaseSeeder extends Seeder
         );
 
         $messages = array(
-<<<<<<< HEAD
             ['body' => 'First sample text in conversation one', 'conversationId' => 1, 'userId' => 1],
             ['body' => 'Second sample text in conversation one', 'conversationId' => 1, 'userId' => 2],
             ['body' => 'First sample text in conversation two', 'conversationId' => 2, 'userId' => 2],
             ['body' => 'Second sample text in conversation two', 'conversationId' => 2, 'userId' => 1],
             ['body' => 'Third sample text in conversation two', 'conversationId' => 2, 'userId' => 2]
-=======
-            ['body' => 'First sample text in conversation one', 'conversationId' => '1', 'userId' => 1],
-            ['body' => 'Second sample text in conversation one', 'conversationId' => '1', 'userId' => 2],
-            ['body' => 'First sample text in conversation two', 'conversationId' => '2', 'userId' => 1],
-            ['body' => 'Second sample text in conversation two', 'conversationId' => '2', 'userId' => 1],
-            ['body' => 'Third sample text in conversation two', 'conversationId' => '2', 'userId' => 2]
->>>>>>> refs/remotes/origin/master
         );
 
         DB::table('posts')->delete();
