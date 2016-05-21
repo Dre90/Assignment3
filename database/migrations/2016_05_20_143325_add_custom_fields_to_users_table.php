@@ -15,8 +15,8 @@ class AddCustomFieldsToUsersTable extends Migration
       Schema::table('users', function(Blueprint $table)
       {
           $table->string('address');
-          $table->integer('postnr',false)->unsigned();
-          $table->integer('phonenumber',false)->unsigned();
+          $table->char('postnr', 4)->index();
+          $table->integer('phonenumber')->unsigned();
           $table->string('userImage');
       });
     }

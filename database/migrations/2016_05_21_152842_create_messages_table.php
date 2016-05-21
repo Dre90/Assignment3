@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->char('postnr', 4);
-            $table->string('placeName');
+        Schema::create('messages', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('body');
+            $table->integer('conversationId')->unsigned()->index();
             $table->timestamps();
-
-            $table->primary('postnr');
         });
     }
 
@@ -28,6 +27,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('posts');
+        Schema::drop('messages');
     }
 }
