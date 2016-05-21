@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Conversation extends Model
 {
   public function ownerUser() {
-    return $this->belongsTo(User::class, 'id', 'ownerId');
+    return $this->belongsTo(User::class, 'ownerId', 'id');
   }
 
   public function interestedUser() {
-    return $this->belongsTo(User::class, 'id', 'interestedId');
+    return $this->belongsTo(User::class, 'interestedId', 'id');
   }
 
   public function item() {
