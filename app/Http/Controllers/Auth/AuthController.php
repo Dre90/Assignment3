@@ -52,7 +52,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'address' => 'required|max:255',
-            'postnr' => 'required|digits:4',
+            'postnr' => 'required|digits:4|exists:posts,postnr',
             'phonenumber' => 'required|digits:8',
             'password' => 'required|min:6|confirmed',
         ]);
