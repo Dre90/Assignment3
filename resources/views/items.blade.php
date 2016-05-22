@@ -42,7 +42,8 @@
                           {{ csrf_field() }}
                           {{ method_field('PATCH') }}
                           <button type="submit" id="update-item-{{ $item->id }}" class="btn btn-success">
-                            <i class="fa fa-btn fa-gift"></i>Give Away
+                            <i class="fa fa-btn fa-gift"></i>
+                            Give Away
                           </button>
                         </form>
                       </td>
@@ -52,7 +53,8 @@
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
                           <button type="submit" id="delete-item-{{ $item->id }}" class="btn btn-danger">
-                            <i class="fa fa-btn fa-trash"></i>Delete
+                            <i class="fa fa-btn fa-trash"></i>
+                            Delete
                           </button>
                         </form>
                       </td>

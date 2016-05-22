@@ -57,7 +57,7 @@ class ItemsController extends Controller
 
       $item->delete();
 
-    return back();
+      return back();
     }
 
     /**
