@@ -34,7 +34,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Bokstavelig talt gratis
+                    Literally free
                 </a>
             </div>
 
@@ -68,7 +68,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('profile') }}">Profil</a></li>
+                                <li><a href="{{ url('profile') }}">Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -77,7 +77,6 @@
             </div>
         </div>
     </nav>
-
     @yield('content')
 
     <!-- JavaScripts -->

@@ -26,9 +26,10 @@
             </p>
             <p>
                 <?php
+                    date_default_timezone_set('Europe/Oslo');
                     $d=strtotime($item->updated_at);
                  ?>
-                Last changed: {{ date("d. F Y", $d) . " at " . date("h:i", $d)}}
+                Last changed: {{ date("d. F Y", $d) . " at " . date("H:i", $d)}}
             </p>
 
         </div>
