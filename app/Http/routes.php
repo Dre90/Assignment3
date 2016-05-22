@@ -16,6 +16,8 @@ Route::auth();
 // Frontpage
 Route::get('/', 'HomeController@index');
 
+Route::get('item/{item}', 'HomeController@show');
+
 // Add items
 Route::get('add_item', 'AddItemController@index');
 

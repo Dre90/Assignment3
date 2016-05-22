@@ -6,6 +6,44 @@ body {
     margin-right: 6px;
 }
 
+.item-Outerbox {
+    border: 1px solid black;
+}
+/*Frontpage*/
+.item-image-box {
+    /*border-bottom: solid #d6d6d6 1px;
+    position: relative;
+    min-height: 250px;*/
+
+background-color: red;
+
+overflow: hidden;
+		position: relative;
+		margin-top: 10px;
+		height: 200px;
+}
+
+.item-image {
+    /*max-width: 100%;
+    margin-bottom: 10px;*/
+height: 100%;
+    width:auto;
+		height: auto;
+
+}
+/*@media screen and (min-width: 992px ) {
+    .item-image {
+        max-height: 150px;
+    }
+ }
+
+ @media screen and (min-width: 1200px ) {
+     .item-image {
+         max-height: 200px;
+     }
+  }*/
+
+
 /* Profile page style */
 .profilePicture {
   padding: 15px 0px;
