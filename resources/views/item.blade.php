@@ -22,15 +22,19 @@
         </div>
         <div class=" col-md-4">
             <div class="userInfo">
-                <img src="../resources/user_images/{{ $item->itemImage }}" class="img-responsive center-block" alt="{{ $item->user->name }} profile picture" />
+                <img src="../resources/user_images/{{ $item->user->userImage}}" class="img-responsive center-block" alt="{{ $item->user->name }} profile picture" />
                 <p>{{ $item->user->name }}</p>
 
             </div>
             <div class="userAddress">
                 <p>{{ $item->user->address }}</p>
-                <p>{{ $item->user->postnr }}</p>
+                <p>{{ $item->user->postnr }} {{ $item->user->post->placeName }}</p>
+                <div class="map">
 
+                </div>
             </div>
+
+
 
         </div>
     </div>
