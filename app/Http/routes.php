@@ -10,12 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('frontpage');
-});
-
 Route::auth();
+
+
+// Frontpage
+Route::get('/', 'HomeController@index');
 
 // Add items
 Route::get('add_item', 'AddItemController@index');
