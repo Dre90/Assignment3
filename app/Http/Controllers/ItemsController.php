@@ -43,4 +43,20 @@ class ItemsController extends Controller
             'givenAwayItems' => $this->item->forUserGivenAway($request->user()),
         ]);
     }
+
+    /**
+    * Destroy the given task.
+    *
+    * @param  Request  $request
+    * @param  Task  $task
+    * @return Response
+    */
+    public function destroy(Request $request, Item $item)
+    {
+      $this->authorize('destroy', $item);
+
+      $item->delete();
+
+    return redirect('/items');
+    }
 }

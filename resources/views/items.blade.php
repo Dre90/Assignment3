@@ -38,8 +38,16 @@
                     <tr>
                       <td>{{ $item->title }}</td>
                       <td>give away</td>
-                      <td><a href="item/{{$item->id}}" class="btn btn-default">Edit</a></td>
-                      <td>delete</td>
+                      <td><a href="item/{{$item->id}}" class="btn btn-default">Edit</a></td><!-- Edit item button -->
+                      <td>
+                        <form action="{{ url('items/'.$item->id) }}" method="POST"><!-- Delete item button -->
+                          {{ csrf_field() }}
+                          {{ method_field('DELETE') }}
+                          <button type="submit" id="delete-item-{{ $item->id }}" class="btn btn-danger">
+                            <i class="fa fa-btn fa-trash"></i>Delete
+                          </button>
+                        </form>
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>
