@@ -27,12 +27,12 @@ class ConstraintsUserItemConversationMessagesTabels extends Migration
         {
             $table->foreign('interestedId')->references('id')->on('users');
             $table->foreign('ownerId')->references('id')->on('users');
-            $table->foreign('itemId')->references('id')->on('items');
+            $table->foreign('itemId')->references('id')->on('items')->onDelete('cascade');
         });
 
         Schema::table('messages', function(Blueprint $table)
         {
-            $table->foreign('conversationId')->references('Id')->on('conversations');
+            $table->foreign('conversationId')->references('Id')->on('conversations')->onDelete('cascade');
             $table->foreign('userId')->references('Id')->on('users');
         });
 
