@@ -46,7 +46,7 @@
                           </button>
                         </form>
                       </td>
-                      <td><a href="item/{{$item->id}}" class="btn btn-default">Edit</a></td><!-- Edit item button -->
+                      <td><a href="items/{{$item->id}}/edit" class="btn btn-default">Edit</a></td><!-- Edit item button -->
                       <td>
                         <form action="{{ url('items/'.$item->id) }}" method="POST"><!-- Delete item button -->
                           {{ csrf_field() }}

@@ -57,7 +57,7 @@ class ItemsController extends Controller
 
       $item->delete();
 
-    return redirect('/items');
+    return back();
     }
 
     /**
@@ -78,5 +78,19 @@ class ItemsController extends Controller
       }
 
     return back();
+    }
+
+    /**
+    * Edit the given item based.
+    *
+    * @param  Request  $request
+    * @param  Item  $item
+    * @return Response
+    */
+    public function edit(Request $request, Item $item)
+    {
+      $this->authorize('edit', $item);
+
+      return view('edit_item');
     }
 }
