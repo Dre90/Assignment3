@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-3"> <!-- sidebar for choice: aktive items and history -->
+        <div class="col-md-3"> <!-- sidebar for choice: active items and given away items -->
           <h1>Sidebar</h1>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9"><!-- main content div -->
           <div class="row">
             Count for Active Items this User has:{{ count($activeItems) }}<br>
             Count for Given Away Items this User has:{{ count($givenAwayItems) }}<br>

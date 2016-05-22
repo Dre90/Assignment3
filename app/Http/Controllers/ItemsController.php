@@ -31,42 +31,17 @@ class ItemsController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the users items page.
      *
      * @return \Illuminate\Http\Response
      */
-     /*
+
     public function index(Request $request)
     {
-        //$items = Item::all()->user->id;
-        //$user = Auth::user();
-
-        //return view('items', compact('items', 'user'));
         return view('items', [
-           'items' => $this->item-forUser($request->user()),
-      ]);
-    }
-    */
-
-    public function index(Request $request)
-    {
-        //variables for storing active and given way items
-        $activeItems = NULL;
-        $givenAwayItems = NULL;
-        //Gathering this users items
-        $items = $this->item->forUser($request->user());
-
-        //splitting this users items into given away or not arrays
-        foreach ($items as $columnName => $item) {
-          if ($item['givenAway'] === 0) {
-            $activeItems .= $item;
-          } elseif ($item['givenAway'] === 1) {
-            $givenAwayItems .= $item;
-          }
-        }
-
-        return view('items', compact('activeItems', 'givenAwayItems'));
-
+            'activeItems' => $this->item->forUserActive($request->user()),
+            'givenAwayItems' => $this->item->forUserGivenAway($request->user()),
+        ]);
 
     }
 
