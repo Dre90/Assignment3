@@ -32,3 +32,6 @@ Route::get('inbox', 'InboxController@index');
 
 // Profile
 Route::get('profile', 'ProfileController@index');
+
+// Edit profile
+Route::get('edit_profile', 'ProfileController@edit');
