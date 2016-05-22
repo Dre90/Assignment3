@@ -47,7 +47,6 @@
                             </div>
                             <div class="">
                                 <?php
-                                    date_default_timezone_set('Europe/Oslo');
                                     $var1 = $item->created_at;
                                     $var2 = date('Y-m-d H:i:s');
 
