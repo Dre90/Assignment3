@@ -12,9 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontpage');
 });
 
 Route::auth();
 
-Route::get('item/items', 'ItemController@index');
+// Add items
+Route::get('add_item', 'AddItemController@index');
+
+// User items
+Route::get('items', 'ItemsController@index');
+
+// Inbox
+Route::get('inbox', 'InboxController@index');
+
+// Profile
+Route::get('profile', 'ProfileController@index');

@@ -14,6 +14,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
+
+
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -40,12 +42,12 @@
                 <ul class="nav navbar-nav">-
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('item/items') }}">Frontpage</a></li>
+                        <li><a href="{{ url('/') }}">Frontpage</a></li>
                     @else
-                        <li><a href="{{ url('item/items') }}">Frontpage</a></li>
-                        <li><a href="{{ url('/addItem') }}">Add item</a></li>
-                        <li><a href="{{ url('/Items') }}">Items</a></li>
-                        <li><a href="{{ url('/Inbox') }}">Inbox</a></li>
+                        <li><a href="{{ url('/') }}">Frontpage</a></li>
+                        <li><a href="{{ url('add_item') }}">Add item</a></li>
+                        <li><a href="{{ url('items') }}">Items</a></li>
+                        <li><a href="{{ url('inbox') }}">Inbox</a></li>
                     @endif
                 </ul>
 
@@ -64,6 +66,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('profile') }}">Profil</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>

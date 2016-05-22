@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class ItemController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,6 +25,6 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('item\items');
+        return view('profile');
     }
 }
