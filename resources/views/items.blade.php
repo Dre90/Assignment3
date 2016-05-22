@@ -80,7 +80,15 @@
                     @foreach($givenAwayItems as $item)
                     <tr>
                       <td>{{ $item->title }}</td>
-                      <td>re-list item</td>
+                      <td>
+                        <form action="{{ url('items/'.$item->id) }}" method="POST"><!-- Relist item button -->
+                          {{ csrf_field() }}
+                          {{ method_field('PATCH') }}
+                          <button type="submit" id="update-item-{{ $item->id }}" class="btn btn-success">
+                            <i class="fa fa-btn fa-gift"></i>Relist
+                          </button>
+                        </form>
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>

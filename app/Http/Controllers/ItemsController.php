@@ -61,7 +61,7 @@ class ItemsController extends Controller
     }
 
     /**
-    * Update the given item.
+    * Update the given item based on current givenAway status.
     *
     * @param  Request  $request
     * @param  Item  $item
@@ -71,7 +71,11 @@ class ItemsController extends Controller
     {
       $this->authorize('update', $item);
 
-      dd('hit');
+      if ($item->givenAway === 0) {
+        Item::where('id', $item->id)->update(['givenAway' => 1]);
+      } elseif ($item->givenAway === 1) {
+        Item::where('id', $item->id)->update(['givenAway' => 0]);
+      }
 
     return back();
     }
