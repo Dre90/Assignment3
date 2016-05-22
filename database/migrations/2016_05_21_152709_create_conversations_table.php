@@ -14,11 +14,12 @@ class CreateConversationsTable extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('fromUserId')->unsigned()->index();
-            $table->integer('toUserId')->unsigned()->index();
+            $table->integer('interestedId')->unsigned()->index();
+            $table->integer('ownerId')->unsigned()->index();
             $table->integer('itemId')->unsigned()->index();
-            $table->unique(['fromUserId', 'toUserId', 'itemId']);
             $table->timestamps();
+
+            $table->unique(['interestedId', 'ownerId', 'itemId']);
         });
     }
 

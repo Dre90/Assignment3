@@ -31,4 +31,21 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Post::class, 'postnr', 'postnr');
     }
+
+    public function item() {
+      return $this->hasMany(Item::class, 'userId', 'id');
+    }
+
+
+    public function conversationAsOwner() {
+      return $this->hasMany(Conversation::class, 'ownerId', 'id');
+    }
+
+    public function conversationAsInterested() {
+      return $this->hasMany(Conversation::class, 'interestedId', 'id');
+    }
+
+    public function message() {
+      return $this->hasMany(Message::class, 'userId', 'id');
+    }
 }
