@@ -66,6 +66,7 @@ class ConstraintsUserItemConversationMessagesTabels extends Migration
         Schema::table('messages', function(Blueprint $table)
         {
             $table->dropForeign(['conversationId']);
+            $table->dropForeign(['userId']);
         });
     }
 }
