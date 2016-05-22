@@ -42,7 +42,5 @@ class ItemsController extends Controller
             'activeItems' => $this->item->forUserActive($request->user()),
             'givenAwayItems' => $this->item->forUserGivenAway($request->user()),
         ]);
-
     }
-
 }
