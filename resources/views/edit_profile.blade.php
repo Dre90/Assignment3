@@ -20,13 +20,11 @@
 
                       <!-- Row for Name and Edit profile-->
                       <div class="row">
-                        <div class="col-md-7 col-lg-7">
-                          <h2 class="profileHeader">{{ Auth::user()->name }}</h2>
-                        </div>
-                        <div class="col-md-5 col-lg-5" align="right">
-                          <a href="{{ url('edit_profile') }}" class="btn btn-default btn sm">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit profile
-                          </a>
+                        <div class="col-md-12 col-lg-12">
+                          <!-- <h2 class="profileHeader">{{ Auth::user()->name }}</h2> -->
+                          <form role="form">
+                            <input type="name" class="form-control" id="name" placeholder="Your name" value="{{ Auth::user()->name }}">
+                          </form>
                         </div>
                       </div>
 
@@ -38,11 +36,9 @@
                       </div>
                       <div class="row profileInfo">
                         <div class="col-md-12 col-lg-12">
-                          <p>{{ Auth::user()->address }} , {{ Auth::user()->postnr }}</p>
+                          <input type="address" class="form-control" id="address" placeholder="Your address" value="{{ Auth::user()->address }}">
+                          <input type="address" class="form-control" id="postnr" placeholder="Your postnr" value="{{ Auth::user()->postnr }}">
                         </div>
-
-
-
                       </div>
 
                       <!-- Rows for Phonenumber -->
@@ -53,7 +49,7 @@
                       </div>
                       <div class="row profileInfo">
                         <div class="col-md-12 col-lg-12">
-                          <p>{{ Auth::user()->phonenumber }}</p>
+                          <input type="number" class="form-control" id="phonenumber" placeholder="Your phonenumber" value="{{ Auth::user()->phonenumber }}">
                         </div>
                       </div>
 
@@ -65,9 +61,11 @@
                       </div>
                       <div class="row profileInfo">
                         <div class="col-md-12 col-lg-12">
-                          <p>{{ Auth::user()->email }}</p>
+                          <input type="text" class="form-control" id="email" placeholder="Your email" value="{{ Auth::user()->email }}">
                         </div>
                       </div>
+
+                      <button type="submit" class="btn btn-default" align="right">Save changes</button>
 
                   </div>
 
