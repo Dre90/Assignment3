@@ -6,6 +6,7 @@ body {
     margin-right: 6px;
 }
 
+
 .item-Outerbox {
     border: 1px solid black;
 }
@@ -43,6 +44,26 @@ height: 100%;
      }
   }*/
 
+
+/*Item page*/
+.userInfo {
+    border-bottom: solid 1px #c7c7c7;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.profile-img {
+    max-width: 200px;
+}
+
+.message {
+    margin-bottom: 15px;
+}
+
+#map_canvas {
+    width: 355px;
+    height: 400px;
+}
 
 /* Profile page style */
 .profilePicture {
