@@ -23,6 +23,9 @@ Route::get('add_item', 'AddItemController@index');
 
 // User items
 Route::get('items', 'ItemsController@index');
+Route::delete('items/{item}', 'ItemsController@destroy');
+Route::patch('items/{item}', 'ItemsController@update');
+Route::get('items/{item}/edit', 'ItemsController@edit');
 
 // Inbox
 Route::get('inbox', 'InboxController@index');
