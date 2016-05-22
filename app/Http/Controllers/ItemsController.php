@@ -45,10 +45,10 @@ class ItemsController extends Controller
     }
 
     /**
-    * Destroy the given task.
+    * Destroy the given item.
     *
     * @param  Request  $request
-    * @param  Task  $task
+    * @param  Item  $item
     * @return Response
     */
     public function destroy(Request $request, Item $item)
@@ -58,5 +58,21 @@ class ItemsController extends Controller
       $item->delete();
 
     return redirect('/items');
+    }
+
+    /**
+    * Update the given item.
+    *
+    * @param  Request  $request
+    * @param  Item  $item
+    * @return Response
+    */
+    public function update(Request $request, Item $item)
+    {
+      $this->authorize('update', $item);
+
+      dd('hit');
+
+    return back();
     }
 }

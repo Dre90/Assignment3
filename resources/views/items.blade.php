@@ -37,7 +37,15 @@
                     @foreach($activeItems as $item)
                     <tr>
                       <td>{{ $item->title }}</td>
-                      <td>give away</td>
+                      <td>
+                        <form action="{{ url('items/'.$item->id) }}" method="POST"><!-- Give Away item button -->
+                          {{ csrf_field() }}
+                          {{ method_field('PATCH') }}
+                          <button type="submit" id="update-item-{{ $item->id }}" class="btn btn-success">
+                            <i class="fa fa-btn fa-gift"></i>Give Away
+                          </button>
+                        </form>
+                      </td>
                       <td><a href="item/{{$item->id}}" class="btn btn-default">Edit</a></td><!-- Edit item button -->
                       <td>
                         <form action="{{ url('items/'.$item->id) }}" method="POST"><!-- Delete item button -->
@@ -79,7 +87,7 @@
                 </table>
               @else
                 <div class="col-md-12">
-                  <h2>You have no given away items.</h2>
+                  <h2>You have not given away any items.</h2>
                 </div>
               @endif
             </div><!-- given away items div end -->
@@ -88,12 +96,3 @@
     </div>
 </div>
 @endsection
-
-<div class="panel panel-default">
-
-    <div class="panel-body">
-        items
-        Aktive items
-        History
-    </div>
-</div>
