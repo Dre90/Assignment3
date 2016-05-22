@@ -56,11 +56,11 @@ class DatabaseSeeder extends Seeder
             ['body' => 'Third sample text in conversation two', 'conversationId' => 2, 'userId' => 2]
         );
 
-        DB::table('posts')->delete();
-        $this->command->info('Post table deleted!');
+        DB::table('messages')->delete();
+        $this->command->info('Messages table deleted!');
 
-        DB::table('users')->delete();
-        $this->command->info('Users table deleted!');
+        DB::table('conversations')->delete();
+        $this->command->info('Conversations table deleted!');
 
         DB::table('items')->delete();
         $this->command->info('Items table deleted!');
@@ -68,12 +68,11 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->delete();
         $this->command->info('Category table deleted!');
 
-        DB::table('conversations')->delete();
-        $this->command->info('Post table deleted!');
+        DB::table('users')->delete();
+        $this->command->info('Users table deleted!');
 
-        DB::table('messages')->delete();
+        DB::table('posts')->delete();
         $this->command->info('Post table deleted!');
-
 
 
 
