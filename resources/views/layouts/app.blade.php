@@ -16,6 +16,8 @@
     <link href="css/style.css" rel="stylesheet">
 
 
+    @yield('custom head')
+
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">

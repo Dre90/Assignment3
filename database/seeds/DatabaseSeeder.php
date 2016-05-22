@@ -38,9 +38,9 @@ class DatabaseSeeder extends Seeder
         );
 
         $items = array(
-            ['title' => 'Lampe', 'categoryId' => 3, 'description' => 'En veldig fin lampe', 'itemImage' => 'Lampe_empire_stil.jpg', 'userId' => 1, 'givenAway' => false],
-            ['title' => 'Fiskestang', 'categoryId' => 8, 'description' => 'En veldig fin og lite brukt iskestang', 'itemImage' => 'fiskestang.jpg', 'userId' => 1, 'givenAway' => false],
-            ['title' => 'Bord', 'categoryId' => 7, 'description' => 'Et veldig fint bord', 'itemImage' => 'bord.jpg', 'userId' => 2, 'givenAway' => false]
+            ['title' => 'Lampe', 'categoryId' => 3, 'description' => 'En veldig fin lampe', 'itemImage' => 'Lampe_empire_stil.jpg', 'userId' => 1, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24'],
+            ['title' => 'Fiskestang', 'categoryId' => 8, 'description' => 'En veldig fin og lite brukt iskestang', 'itemImage' => 'fiskestang.jpg', 'userId' => 1, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24'],
+            ['title' => 'Bord', 'categoryId' => 7, 'description' => 'Et veldig fint bord', 'itemImage' => 'bord.jpg', 'userId' => 2, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24']
         );
 
         $conversations = array(
