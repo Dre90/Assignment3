@@ -5,3 +5,23 @@ body {
 .fa-btn {
     margin-right: 6px;
 }
+
+/* Profile page style */
+.profilePicture {
+  padding: 15px 0px;
+}
+
+.profileHeader{
+  margin: 0px;
+  padding: 15px 0px;
+}
+
+.profileLabel {
+  padding-top: 15px;
+  border-top: 1px solid #dddddd;
+}
+
+.profileInfo {
+  padding-bottom: 10px;
+  font-size: 1.2em;
+}
