@@ -6,6 +6,12 @@
         <div class=" col-md-3">
             <h1>Categories</h1>
             <form>
+                <div class="radio">
+                    <label>
+                        <input onclick="showCustomer(this.value)" type="radio" name="optionsRadios" id="optionsRadios2" value="0" checked>
+                        Show all
+                    </label>
+                </div>
                 @foreach($categories as $Category)
                     {{-- <div class="radio">
                         <label>

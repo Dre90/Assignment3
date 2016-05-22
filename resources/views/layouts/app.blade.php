@@ -41,7 +41,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
 
-                <ul class="nav navbar-nav">-
+                <ul class="nav navbar-nav">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/') }}">Frontpage</a></li>
