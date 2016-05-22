@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         );
 
         $users = array(
-            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Skolegata', 'postnr' => 1300, 'phonenumber' => 12345678, 'userImage' => 'test.jpg'],
-            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Parkveien', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'test.jpg']
+            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Skolegata', 'postnr' => 1300, 'phonenumber' => 12345678, 'userImage' => 'default.jpg'],
+            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Parkveien', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'default.jpg']
         );
 
         $categories = array(
