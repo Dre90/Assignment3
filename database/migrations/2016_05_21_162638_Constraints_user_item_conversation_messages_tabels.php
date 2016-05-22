@@ -58,8 +58,8 @@ class ConstraintsUserItemConversationMessagesTabels extends Migration
 
         Schema::table('conversations', function(Blueprint $table)
         {
-            $table->dropForeign(['fromUserId']);
-            $table->dropForeign(['toUserId']);
+            $table->dropForeign(['interestedId']);
+            $table->dropForeign(['ownerId']);
             $table->dropForeign(['itemId']);
         });
 
