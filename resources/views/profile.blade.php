@@ -24,7 +24,6 @@
                           <h2 class="profileHeader">{{ Auth::user()->name }}</h2>
                         </div>
                         <div class="col-md-5 col-lg-5" align="right">
-                          <!-- <p class="editProfile">edit profile [ ]</p> -->
                           <a href="{{ url('profile') }}" class="btn btn-default btn sm">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit profile
                           </a>
