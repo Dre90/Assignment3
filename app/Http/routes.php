@@ -15,7 +15,7 @@ Route::auth();
 
 // Frontpage
 Route::get('/', 'HomeController@index');
-Route::post('item/{categoryid}', 'HomeController@showcategory');
+
 Route::get('item/{item}', 'HomeController@show');
 
 // Add items
@@ -35,3 +35,4 @@ Route::get('profile', 'ProfileController@index');
 
 // Edit profile
 Route::get('edit_profile', 'ProfileController@edit');
+Route::patch('edit_profile', 'ProfileController@update');

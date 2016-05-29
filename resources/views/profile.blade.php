@@ -6,10 +6,6 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="row">
-
                   <!-- Profile picture -->
                   <div class="col-md-4 col-lg-4">
                       <img src="resources/user_images/{{ Auth::user()->userImage }}" class="img-responsive profilePicture" alt="{{ Auth::user()->name }} profile picture" />
@@ -73,10 +69,6 @@
 
                   <!-- Spacing for the right side of Profile Information -->
                   <div class="col-md-1 col-lg-1"></div>
-
-                </div>
-              </div>
-            </div>
 
         </div>
     </div>

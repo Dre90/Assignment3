@@ -31,4 +31,9 @@ class ProfileController extends Controller
     {
         return view('edit_profile');
     }
+
+    public function update()
+    {
+      
+    }
 }
