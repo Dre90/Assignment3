@@ -20,6 +20,7 @@ Route::get('item/{item}', 'HomeController@show');
 
 // Add items
 Route::get('add_item', 'AddItemController@index');
+Route::post('add_item/new_item', 'AddItemController@store');
 
 // User items
 Route::get('items', 'ItemsController@index');
