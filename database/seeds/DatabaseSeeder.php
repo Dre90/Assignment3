@@ -13,15 +13,15 @@ class DatabaseSeeder extends Seeder
     {
         $posts = array(
             ['postnr' => 1001, 'placeName' => 'Oslo'],
-            ['postnr' => 1300, 'placeName' => 'Sandvika'],
+            ['postnr' => 1337, 'placeName' => 'Sandvika'],
             ['postnr' => 1400, 'placeName' => 'Ski'],
             ['postnr' => 1501, 'placeName' => 'Moss'],
             ['postnr' => 1601, 'placeName' => 'Fredrikstad']
         );
 
         $users = array(
-            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Skolegata', 'postnr' => 1300, 'phonenumber' => 12345678, 'userImage' => 'default.jpg'],
-            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Parkveien', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'default.jpg']
+            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Jongsåsveien 2 F', 'postnr' => 1337 , 'phonenumber' => 12345678, 'userImage' => 'default.jpg'],
+            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Nordbyveien 122', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'default.jpg']
         );
 
         $categories = array(
@@ -38,9 +38,9 @@ class DatabaseSeeder extends Seeder
         );
 
         $items = array(
-            ['title' => 'Lampe', 'categoryId' => 3, 'description' => 'En veldig fin lampe', 'itemImage' => 'Lampe_empire_stil.jpg', 'userId' => 1, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24'],
-            ['title' => 'Fiskestang', 'categoryId' => 8, 'description' => 'En veldig fin og lite brukt iskestang', 'itemImage' => 'fiskestang.jpg', 'userId' => 1, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24'],
-            ['title' => 'Bord', 'categoryId' => 7, 'description' => 'Et veldig fint bord', 'itemImage' => 'bord.jpg', 'userId' => 2, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24']
+            ['title' => 'Lampe', 'categoryId' => 3, 'description' => 'En veldig fin lampe. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique ex ligula, ut ullamcorper lacus venenatis quis. Sed placerat scelerisque tristique. Integer mollis consequat felis id tincidunt. Donec maximus venenatis ultrices. Fusce felis mauris, tincidunt eget gravida eu, dictum vel enim. Curabitur vitae metus porttitor sapien hendrerit accumsan id ut leo. Phasellus in accumsan neque. Donec sollicitudin auctor mi condimentum tristique. Nam consequat turpis a quam sollicitudin pretium. Sed vestibulum fermentum lectus eget finibus. Curabitur condimentum rutrum eros non gravida. Suspendisse auctor tellus et aliquet dictum. Pellentesque hendrerit ut dui ut sodales. Duis sit amet lorem turpis.', 'itemImage' => 'Lampe_empire_stil.jpg', 'userId' => 1, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24'],
+            ['title' => 'Fiskestang', 'categoryId' => 8, 'description' => 'En veldig fin og lite brukt iskestang. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique ex ligula, ut ullamcorper lacus venenatis quis. Sed placerat scelerisque tristique. Integer mollis consequat felis id tincidunt. Donec maximus venenatis ultrices. Fusce felis mauris, tincidunt eget gravida eu, dictum vel enim. Curabitur vitae metus porttitor sapien hendrerit accumsan id ut leo. Phasellus in accumsan neque. Donec sollicitudin auctor mi condimentum tristique. Nam consequat turpis a quam sollicitudin pretium. Sed vestibulum fermentum lectus eget finibus. Curabitur condimentum rutrum eros non gravida. Suspendisse auctor tellus et aliquet dictum. Pellentesque hendrerit ut dui ut sodales. Duis sit amet lorem turpis.', 'itemImage' => 'fiskestang.jpg', 'userId' => 1, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24'],
+            ['title' => 'Bord', 'categoryId' => 7, 'description' => 'Et veldig fint bord. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique ex ligula, ut ullamcorper lacus venenatis quis. Sed placerat scelerisque tristique. Integer mollis consequat felis id tincidunt. Donec maximus venenatis ultrices. Fusce felis mauris, tincidunt eget gravida eu, dictum vel enim. Curabitur vitae metus porttitor sapien hendrerit accumsan id ut leo. Phasellus in accumsan neque. Donec sollicitudin auctor mi condimentum tristique. Nam consequat turpis a quam sollicitudin pretium. Sed vestibulum fermentum lectus eget finibus. Curabitur condimentum rutrum eros non gravida. Suspendisse auctor tellus et aliquet dictum. Pellentesque hendrerit ut dui ut sodales. Duis sit amet lorem turpis.', 'itemImage' => 'bord.jpg', 'userId' => 2, 'givenAway' => false, 'created_at' => '2016-05-22 12:08:24', 'updated_at' => '2016-05-22 12:08:24']
         );
 
         $conversations = array(
