@@ -40,8 +40,6 @@ class AddItemController extends Controller
             $image = $request->file("image");
             $filename = time() . '.' . $image->getClientOriginalExtension();
             Image::make($image)->save( public_path("/resources/item_images/" . $filename) );
-
-
         }
 
         $todays_date = date("Y-m-d H:i:s");
@@ -55,7 +53,6 @@ class AddItemController extends Controller
         $new_item->updated_at = $todays_date;
 
         $new_item->save();
-
         return back();
     }
 }

@@ -26,7 +26,6 @@
                 <div class="form-group">
                     <label for="image">Upload a image</label>
                     <input type="file" name="image" id="image">
-                    <p class="help-block">Example block-level help text here.</p>
                 </div>
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -10,6 +10,15 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+.small-profilePicture{
+    width: 25px;
+    height: 25px;
+
+    margin-right: 5px;
+    border-radius: 50%;
+
+}
+
 
 /*******************************/
 /*----------Frontpage----------*/

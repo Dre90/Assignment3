@@ -48,7 +48,7 @@
                     @else
                         <li><a href="{{ url('/') }}">Frontpage</a></li>
                         <li><a href="{{ url('add_item') }}">Add item</a></li>
-                        <li><a href="{{ url('items') }}">Items</a></li>
+                        <li><a href="{{ url('items') }}">My items</a></li>
                         <li><a href="{{ url('inbox') }}">Inbox</a></li>
                     @endif
                 </ul>
@@ -64,6 +64,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <img src="resources/user_images/{{ Auth::user()->userImage }}" class="small-profilePicture" alt="" />
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
