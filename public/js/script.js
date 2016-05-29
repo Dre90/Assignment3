@@ -6,7 +6,7 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
   var latlng = new google.maps.LatLng(64.7169265, 16.2798461);
   var myOptions = {
-    zoom: 9,
+    zoom: 14,
     center: latlng,
     mapTypeControl: true,
     mapTypeControlOptions: {
