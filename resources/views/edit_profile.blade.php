@@ -16,13 +16,14 @@
                       <input type="file" class="form-control">
                   </div>
 
+
                   <!-- Profile information -->
                   <div class="col-md-7 col-lg-7">
 
                       <!-- Row for Name and Edit profile-->
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                           <div class="col-md-12">
-                              <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}">
+                              <input type="text" class="form-control" name="name" value="">
 
                               @if ($errors->has('name'))
                                   <span class="help-block">
@@ -31,6 +32,7 @@
                               @endif
                           </div>
                       </div>
+
 
                       <!-- Rows for Address -->
                       <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
@@ -98,7 +100,7 @@
 
 
                       <!-- Save changes button -->
-                      <button type="submit" class="btn btn-default">Save changes</button>
+                      <!-- <button type="submit" class="btn btn-default">Save changes</button> -->
                       <div class="form-group">
                           <div class="col-md-12">
                               <button type="submit" class="btn btn-primary">

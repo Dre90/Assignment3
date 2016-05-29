@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\User;
+use Image;
 
 class ProfileController extends Controller
 {
@@ -32,8 +34,17 @@ class ProfileController extends Controller
         return view('edit_profile');
     }
 
-    public function update()
+    public function update(Request $request)
     {
-      
+      $update_user = new user;
+        $update_user->name = $request->name;
+        $update_user->address = $request->address;
+        $update_user->postnr = $request->postnr;
+        $update_user->phonenumber = $request->phonenumber;
+        $update_user->email = $request->email;
+
+        $update_user->update();
+
+        return back();
     }
 }
