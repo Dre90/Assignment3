@@ -15,26 +15,41 @@
             <li -class="active">{{ $item->title }}</li>
         </ol>
     </div>
-    <div class="row">
+    <div class="row ">
         <div class=" col-md-8">
-            <img src="../resources/item_images/{{ $item->itemImage }}" class="img-responsive center-block" alt="{{ $item->title }} image" />
+            <div class="item-image-box-item-page">
+                <img src="../resources/item_images/{{ $item->itemImage }}" class="img-responsive center-block item-image-item-page" alt="{{ $item->title }} image" />
+            </div>
+            <div class="border-buttom">
+                <h1>{{ $item->title }}</h1>
+            </div>
+            <div class="category border-buttom">
+                <h4><small>Category:</small> {{ $item->category->categoryName }}</h4>
+            </div>
 
-            <h1>{{ $item->title }}</h1>
-            <h4><small>Category:</small> {{ $item->category->categoryName }}</h4>
-            <p>
-                {{ $item->description }}
-            </p>
-            <p>
-                <?php
-                    $d=strtotime($item->updated_at);
-                 ?>
-                Last changed: {{ date("d. F Y", $d) . " at " . date("H:i", $d)}}
-            </p>
+
+                <div class="description border-buttom">
+                    <p>
+                        {{ $item->description }}
+                    </p>
+                    <p>
+                </div>
+
+                <div class="border-buttom">
+                    <?php
+                        $d=strtotime($item->updated_at);
+                     ?>
+                    Last changed: {{ date("d. F Y", $d) . " at " . date("H:i", $d)}}
+                </p>
+                </div>
+
 
         </div>
         <div class=" col-md-4">
             <div class="userInfo">
-                <img src="../resources/user_images/{{ $item->user->userImage}}" class="profile-img center-block img-thumbnail" alt="{{ $item->user->name }} profile picture" />
+                <div class="profile-image-item-page">
+                    <img src="../resources/user_images/{{ $item->user->userImage}}" class="profile-img center-block img-thumbnail" alt="{{ $item->user->name }} profile picture" />
+                </div>
                 <h2 class="text-center">{{ $item->user->name }}</h2>
 
                 <form>
@@ -46,19 +61,13 @@
             </div>
 
             <script>
-            var address = "{{ $item->user->address }} {{ $item->user->postnr }} {{ $item->user->post->placeName }}";
-            // var address = "foobar";
+                var address = "{{ $item->user->address }} {{ $item->user->postnr }} {{ $item->user->post->placeName }}";
             </script>
             <div class="userAddress">
                 <h3 class="text-center">{{ $item->user->address }}, {{ $item->user->postnr }} {{ $item->user->post->placeName }}</h3>
 
                 <div id="map_canvas" ></div>
             </div>
-
-            <div class="similarCategorys">
-
-            </div>
-
         </div>
     </div>
 </div>

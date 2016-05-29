@@ -18,15 +18,17 @@ class HomeController extends Controller
                     ->where('givenAway', 0)
                     ->get();
 
-
-
-
         return view('frontpage', compact('items', 'categories'));
     }
 
     public function show(Item $item)
     {
         return view('item', compact('item'));
+    }
+
+    public function showcategory()
+    {
+        
     }
 
 
