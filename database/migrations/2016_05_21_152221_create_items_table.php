@@ -16,7 +16,7 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('categoryId')->unsigned()->index();
-            $table->string('description');
+            $table->text('description');
             $table->string('itemImage');
             $table->integer('userId')->unsigned()->index();
             $table->boolean('givenAway');
