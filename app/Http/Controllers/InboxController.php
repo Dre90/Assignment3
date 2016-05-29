@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Conversation;
+
+use App\User;
+
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Repositories\ConversationRepository;
@@ -30,11 +33,6 @@ class InboxController extends Controller
         $this->conversation = $conversations;
     }
 
-    //function for preparing the Data
-    public function prepareData(Request $Request) {
-
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -42,9 +40,11 @@ class InboxController extends Controller
      */
     public function index(Request $Request)
     {
+
       //gather data about conversations for this user
       $convOwner = $this->conversation->forUserConvoOwner($Request->user());
       $convInterested = $this->conversation->forUserConvoInterested($Request->user());
+
 
       //merge to one laravel collection
       $conversations = collect();
@@ -59,11 +59,17 @@ class InboxController extends Controller
       return view('inbox', compact('conversations'));
     }
 
-    public function show(Request $Request)
+    public function show(Conversation $conversation)
     {
       //add authorization
 
-      
-      return view('conversation', compact('conversations'));
+
+      return view('conversation', compact('conversation'));
+      /*
+      $convo = Conversation::where('id', $conversation->id);
+      return '<pre>' . print_r($convo);
+      return view('inbox', compact('conversations'));
+      //return '<pre>' . $Request;
+      */
     }
 }
