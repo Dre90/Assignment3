@@ -13,15 +13,15 @@ class DatabaseSeeder extends Seeder
     {
         $posts = array(
             ['postnr' => 1001, 'placeName' => 'Oslo'],
-            ['postnr' => 1300, 'placeName' => 'Sandvika'],
+            ['postnr' => 1337, 'placeName' => 'Sandvika'],
             ['postnr' => 1400, 'placeName' => 'Ski'],
             ['postnr' => 1501, 'placeName' => 'Moss'],
             ['postnr' => 1601, 'placeName' => 'Fredrikstad']
         );
 
         $users = array(
-            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Skolegata', 'postnr' => 1300, 'phonenumber' => 12345678, 'userImage' => 'default.jpg'],
-            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Parkveien', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'default.jpg']
+            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Jongsåsveien 2 F', 'postnr' => 1337 , 'phonenumber' => 12345678, 'userImage' => 'default.jpg'],
+            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Nordbyveien 122', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'default.jpg']
         );
 
         $categories = array(
