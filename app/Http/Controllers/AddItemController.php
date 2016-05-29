@@ -41,6 +41,7 @@ class AddItemController extends Controller
             $filename = time() . '.' . $image->getClientOriginalExtension();
             Image::make($image)->save( public_path("/resources/item_images/" . $filename) );
         }
+        // https://www.youtube.com/watch?v=jy2SUxx6uHc
 
         $todays_date = date("Y-m-d H:i:s");
         $new_item = new Item;
