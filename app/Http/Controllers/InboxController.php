@@ -30,6 +30,11 @@ class InboxController extends Controller
         $this->conversation = $conversations;
     }
 
+    //function for preparing the Data
+    public function prepareData(Request $Request) {
+
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -51,19 +56,14 @@ class InboxController extends Controller
         $conversations->push($convo);
       }
 
-      //gathering the messages
-      foreach ($conversations as $counter => $convo) {
-        $convoMessages[$counter] = $convo->message;
-      }
+      return view('inbox', compact('conversations'));
+    }
 
-      return view('inbox', compact('conversations', 'convoMessages'));
+    public function show(Request $Request)
+    {
+      //add authorization
 
-      //return view('inbox', compact('convOwner', 'convInterested', 'convoOwnerMessages'));
-      /*
-      return view('inbox', [
-          'convOwner' => $this->conversation->forUserConvoOwner($Request->user()),
-          'convInterested' => $this->conversation->forUserConvoInterested($Request->user()),
-      ]);
-      */
+      
+      return view('conversation', compact('conversations'));
     }
 }

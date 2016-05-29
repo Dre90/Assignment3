@@ -29,6 +29,7 @@ Route::get('items/{item}/edit', 'ItemsController@edit');
 
 // Inbox
 Route::get('inbox', 'InboxController@index');
+Route::get('inbox/{Conversation}', 'InboxController@show');
 
 // Profile
 Route::get('profile', 'ProfileController@index');
