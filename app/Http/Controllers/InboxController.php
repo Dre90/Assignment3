@@ -63,6 +63,7 @@ class InboxController extends Controller
     public function show(Conversation $conversation)
     {
       //add authorization
+      $this->authorize('show', $conversation);
 
       //get conversation with correct messages
       $conversationMess = $conversation->with('message')
@@ -72,8 +73,11 @@ class InboxController extends Controller
       return view('conversation', compact('conversation', 'conversationMess'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Conversation $conversation)
     {
+      //authorize the new message
+      $this->authorize('store', $conversation);
+
       $this->validate($request, [
         'convId' => 'required|exists:conversations,id',
         'userId' => 'required|exists:users,id',
