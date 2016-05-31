@@ -113,9 +113,12 @@ class ItemsController extends Controller
             $filename = $item->itemImage;
         }
 
-
-        Item::where('id', $item->id)->update(['id' => $item->id, 'title' => $request->title, 'categoryid' => $request->category, 'description' => $request->description, 'itemImage' => $filename]);
-
+        Item::where('id', $item->id)->update([  'id' => $item->id,
+                                                'title' => $request->title,
+                                                'categoryid' => $request->category,
+                                                'description' => $request->description,
+                                                'itemImage' => $filename]
+                                            );
         return back();
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use Image;
-
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -31,25 +31,46 @@ class ProfileController extends Controller
         return view('profile');
     }
 
-    public function edit()
+    public function edit(user $user)
     {
-        return view('edit_profile');
+        $loggedInUser = Auth::user()->id;
+        $user = user::where('id', $loggedInUser)->get()->first();
+
+        // return $user;
+        return view('edit_profile', compact('user'));
 
     }
 
 
-    public function update(Request $request)
+    public function update(Request $request, user $user)
     {
-      $update_user = new User;
-        $update_user->name = $request->name;
-        $update_user->address = $request->address;
-        $update_user->postnr = $request->postnr;
-        $update_user->phonenumber = $request->phonenumber;
-        $update_user->email = $request->email;
+        // $this->validate($request, [
+        //     'name' => 'required|max:255',
+        //     'email' => 'required|email|max:255',
+        //     'address' => 'required|max:255',
+        //     'postnr' => 'required|digits:4|exists:posts,postnr',
+        //     'phonenumber' => 'required|digits:8'
+        // ]);
+        //
+        // if($request->hasFile("image")) {
+        //     $image = $request->file("image");
+        //     $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
+        //     Image::make($image)->save( public_path("/resources/user_images/" . $filename) );
+        // } else {
+        //     $filename = $user->userImage;
+        // }
 
-        $update_user->update();
-
-        return back();
+        // user::where('id', $user->id)->update([  'id' => $user->id,
+        //                                         'name' => $request->name,
+        //                                         'email' => $request->email,
+        //                                         'address' => $request->address,
+        //                                         'postnr' => $request->postnr,
+        //                                         'phonenumber' => $request->phonenumber,
+        //                                         'userImage' => $filename]
+        //                                     );
+return view('profile');
+        return "test";
+        // return back();
     }
 
 
