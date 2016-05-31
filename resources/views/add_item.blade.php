@@ -53,7 +53,7 @@
                 </div>
                 <input type="hidden" name="_userid" value="{{ Auth::user()->id }}">
 
-                <button type="submit" class="btn btn-default pull-right">Upload</button>
+                <button type="submit" class="btn btn-primary pull-right">Upload</button>
 
             </form>
         </div>

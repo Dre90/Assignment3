@@ -49,8 +49,6 @@ class AddItemController extends Controller
             Image::make($image)->save( public_path("/resources/item_images/" . $filename) );
         }
 
-
-        $todays_date = date("Y-m-d H:i:s");
         $new_item = new Item;
         $new_item->title = $request->title;
         $new_item->categoryid = $request->category;
