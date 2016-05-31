@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            
+
             <form enctype="multipart/form-data" method="POST" action="save">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
@@ -49,12 +49,6 @@
                         </span>
                     @endif
                 </div>
-                <div class="form-group">
-                    <label>Current image</label>
-                    <div class="item-image-box-item-page">
-                        <img src="{{url('resources/item_images/')}}/{{$item->itemImage }}" class="img-responsive center-block item-image-item-page" alt="{{ $item->title }} image" />
-                    </div>
-                </div>
                 <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
                     <label for="image">Upload a image</label>
                     <input type="file" name="image" id="image">
@@ -64,10 +58,21 @@
                         </span>
                     @endif
                 </div>
+
+                <div class="save-button">
+                    <button type="submit" class="btn btn-primary pull-right">Save</button>
+
+                </div>
+                <div class="form-group">
+                    <label>Current image</label>
+                    <div class="item-image-box-item-page">
+                        <img src="{{url('resources/item_images/')}}/{{$item->itemImage }}" class="img-responsive center-block item-image-item-page" alt="{{ $item->title }} image" />
+                    </div>
+                </div>
                 <input type="hidden" name="_userid" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="_itemid" value="{{ $item->id }}">
 
-                <button type="submit" class="btn btn-primary pull-right">Save</button>
+
 
             </form>
         </div>

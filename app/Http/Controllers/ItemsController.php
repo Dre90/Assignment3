@@ -103,7 +103,6 @@ class ItemsController extends Controller
             'title' => 'required|max:255',
             'category' => 'required',
             'description' => 'required'
-            // 'image' => 'required|image',
         ]);
 
         if($request->hasFile("image")) {
@@ -115,28 +114,7 @@ class ItemsController extends Controller
         }
 
 
-        // $new_item = new Item;
-        // $new_item->id = $item->id;
-        // $new_item->title = $request->title;
-        // $new_item->categoryid = $request->category;
-        // $new_item->description = $request->description;
-        // $new_item->itemImage = $filename;
-        // $new_item->userId = $request->_userid;
-        //
-        // // $new_item->save();
-        // $new_item->update();
-
-Item::where('id', $item->id)->update(['id' => $item->id, 'title' => $request->title, 'categoryid' => $request->category, 'description' => $request->description, 'itemImage' => $filename]);
-
-        // $new_item = new Item;
-        // $new_item->id = $item->id;
-        // $new_item->title = $request->title;
-        // $new_item->categoryid = $request->category;
-        // $new_item->description = $request->description;
-        // $new_item->itemImage = $filename;
-        //
-        // // $new_item->save();
-        // $new_item->update();
+        Item::where('id', $item->id)->update(['id' => $item->id, 'title' => $request->title, 'categoryid' => $request->category, 'description' => $request->description, 'itemImage' => $filename]);
 
         return back();
     }
