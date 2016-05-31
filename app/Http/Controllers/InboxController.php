@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Conversation;
+use App\Message;
 
 use App\User;
 
@@ -79,8 +80,13 @@ class InboxController extends Controller
         'newMessage' => 'required',
       ]);
 
+      $newMessage = new Message;
+      $newMessage->conversationId = $request->convId;
+      $newMessage->userId = $request->userId;
+      $newMessage->body = $request->newMessage;
 
+      $newMessage->save();
 
-      return back();
+      return \Redirect::to('inbox/' . $request->convId);
     }
 }

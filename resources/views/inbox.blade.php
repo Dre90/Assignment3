@@ -3,13 +3,18 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
+      @if(count($conversations) === 0)
+        <div class="col-md-12 text-center">
+          <h1>You do not have any conversations.</h1>
+        </div>
+      @else
+        <div class="col-md-12">
           <!-- all conversations -->
-          <p>Your Conversations</p>
-          <div class="list-group">
+          <h1 class="text-center">Your Conversations</h1>
+          <div class="list-group text-center">
             @foreach ($conversations as $conversation)
               <form action="{{ url('inbox/' . $conversation->id) }}" method="GET"><!-- Give Away item button -->
-                <button type="submit" id="show-conversation-{{ $conversation->id }}" class="btn btn-default col-md-12">
+                <button type="submit" id="show-conversation-{{ $conversation->id }}" class="btn btn-default col-md-6">
                   <p>Item: {{ $conversation->item->title }}.</p>
                   <!-- if user is owner, show You here -->
                   <p>Owner:
@@ -30,14 +35,7 @@
             @endforeach
           </div>
         </div>
-        <div class="col-md-9">
-          <!-- one coversation's messages -->
-          <div class="row">
-            <div class="col-md-12">
-
-            </div>
-          </div>
-        </div>
+      @endif
     </div>
 </div>
 @endsection
