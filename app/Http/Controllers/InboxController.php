@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Conversation;
 use App\Message;
-
+use App\Item;
 use App\User;
 
 use App\Http\Requests;
@@ -92,5 +92,37 @@ class InboxController extends Controller
       $newMessage->save();
 
       return \Redirect::to('inbox/' . $request->convId);
+    }
+
+    public function create(Request $request, Conversation $conversation, Item $item)
+    {
+      $this->validate($request, [
+        'newMessage' => 'required',
+      ]);
+
+      
+              //ok to upload
+
+
+              //lag convo med itemid, userid, ownerid
+
+              //hent convo id
+
+              //lagre ny melding med convoid, userId
+
+
+      // //check if unique ids in conversations table
+      // $checkDB = count(Conversation::where('interestedId', $request->user()->id)->
+      //                             where('ownerId', $item->userId)->
+      //                             where('itemId', $item->id)->get());
+      //
+      // if (($item->userId === $request->user()->id) || (count($checkDB) !== 0)) {
+      //   //not ok
+      //   return 'Not ok to start new conversation.';
+      // } else {
+      //
+      //
+      // }
+      //return \Redirect::to('inbox');
     }
 }

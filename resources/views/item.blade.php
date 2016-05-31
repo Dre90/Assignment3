@@ -61,10 +61,19 @@
                     </div>
                   </div>
                 @elseif((Auth::check()) && (count($convoInterested) === 0))
-                  <form>
-                      <textarea class="form-control message" rows="4"></textarea>
-                      <button type="button" class="btn btn-primary btn-lg btn-block">Send message</button>
-                  </form>
+                <form method="POST" action="{{ url('inbox/' . $item->id) . '/create'}}">
+                    {{ csrf_field() }}
+                    <!-- <input type="hidden" name="item" value="{{ $item }}"> -->
+                    <div class="form-group{{ $errors->has('newMessage') ? ' has-error' : '' }}">
+                      <textarea class="form-control message" name="newMessage" value="{{ old('newMessage') }}" rows="4"></textarea>
+                      @if ($errors->has('newMessage'))
+                        <span class="help-block">
+                          <strong>{{ $errors->first('newMessage') }}</strong>
+                        </span>
+                      @endif
+                      <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message</button>
+                    </div>
+                </form>
                 @else
                   <div class="row">
                     <div class="col-md-12 text-center">
