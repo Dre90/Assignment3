@@ -10,7 +10,6 @@ body {
     border-bottom: 1px solid #eee;
 }
 
-
 /*******************************/
 /*----------Frontpage----------*/
 /*******************************/
@@ -53,6 +52,7 @@ body {
 }
 
 .description {
+    white-space: pre-wrap;
     margin-top: 20px;
     margin-bottom: 20px;
 }
