@@ -99,10 +99,6 @@ class ItemsController extends Controller
 
     public function save(Request $request, Item $item)
     {
- $itemimg = item::where('id', $item->id)->get();
-
-        // $item->update($request->all());
-        // return back();
         $this->validate($request, [
             'title' => 'required|max:255',
             'category' => 'required',
@@ -115,19 +111,33 @@ class ItemsController extends Controller
             $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
             Image::make($image)->save( public_path("/resources/item_images/" . $filename) );
         } else {
-            $filename = $itemimg->itemImage;
+            $filename = $item->itemImage;
         }
 
-        $new_item = new Item;
-        $new_item->id = $request->itemid;
-        $new_item->title = $request->title;
-        $new_item->categoryid = $request->category;
-        $new_item->description = $request->description;
-        $new_item->itemImage = $filename;
-        $new_item->userId = $request->_userid;
 
-        $new_item->save();
+        // $new_item = new Item;
+        // $new_item->id = $item->id;
+        // $new_item->title = $request->title;
+        // $new_item->categoryid = $request->category;
+        // $new_item->description = $request->description;
+        // $new_item->itemImage = $filename;
+        // $new_item->userId = $request->_userid;
+        //
+        // // $new_item->save();
+        // $new_item->update();
+
+Item::where('id', $item->id)->update(['id' => $item->id, 'title' => $request->title, 'categoryid' => $request->category, 'description' => $request->description, 'itemImage' => $filename]);
+
+        // $new_item = new Item;
+        // $new_item->id = $item->id;
+        // $new_item->title = $request->title;
+        // $new_item->categoryid = $request->category;
+        // $new_item->description = $request->description;
+        // $new_item->itemImage = $filename;
+        //
+        // // $new_item->save();
+        // $new_item->update();
+
         return back();
-        // return \Redirect::to('items');
     }
 }

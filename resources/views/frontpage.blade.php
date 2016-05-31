@@ -40,7 +40,7 @@
                         </div>
                         <div class="">
                             <?php
-                                $var1 = $item->created_at;
+                                $var1 = $item->updated_at;
                                 $var2 = date('Y-m-d H:i:s');
 
 

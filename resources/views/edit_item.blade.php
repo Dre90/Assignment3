@@ -6,6 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            
             <form enctype="multipart/form-data" method="POST" action="save">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
