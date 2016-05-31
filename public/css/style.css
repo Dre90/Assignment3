@@ -10,6 +10,12 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+.small-profilePicture{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
 
 /*******************************/
 /*----------Frontpage----------*/
@@ -53,6 +59,7 @@ body {
 }
 
 .description {
+    white-space: pre-wrap;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -73,6 +80,10 @@ body {
 #map_canvas {
     width: 355px;
     height: 400px;
+}
+
+.save-button {
+    height: 30px;
 }
 
 /****************************************/
@@ -97,3 +108,20 @@ body {
   padding-bottom: 10px;
   font-size: 1.2em;
 }
+
+/*********************************************/
+/*----------Conversation page style----------*/
+/*********************************************/
+.conversationMessageCurrentUser {
+  border-top: 1px solid #dddddd;
+  padding-bottom: 1em;
+}
+
+.conversationMessageOtherUser {
+  border-top: 1px solid #dddddd;
+  padding-bottom: 1em;
+}
+
+/*********************************************/
+/*----------Inbox page style----------*/
+/*********************************************/

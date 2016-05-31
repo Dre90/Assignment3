@@ -36,26 +36,28 @@ class AddItemController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'category' => 'required',
+            'description' => 'required',
+            'image' => 'required|image',
+        ]);
+
         if($request->hasFile("image")) {
             $image = $request->file("image");
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
             Image::make($image)->save( public_path("/resources/item_images/" . $filename) );
-
-
         }
 
-        $todays_date = date("Y-m-d H:i:s");
         $new_item = new Item;
         $new_item->title = $request->title;
         $new_item->categoryid = $request->category;
         $new_item->description = $request->description;
         $new_item->itemImage = $filename;
         $new_item->userId = $request->_userid;
-        $new_item->created_at = $todays_date;
-        $new_item->updated_at = $todays_date;
 
         $new_item->save();
 
-        return back();
+        return \Redirect::to('items');
     }
 }
