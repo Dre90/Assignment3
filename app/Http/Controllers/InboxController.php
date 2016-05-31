@@ -63,8 +63,12 @@ class InboxController extends Controller
     {
       //add authorization
 
+      //get conversation with correct messages
+      $conversationMess = $conversation->with('message')
+                          ->where('id', $conversation->id)
+                          ->get();
 
-      return view('conversation', compact('conversation'));
+      return view('conversation', compact('conversation', 'conversationMess'));
       /*
       $convo = Conversation::where('id', $conversation->id);
       return '<pre>' . print_r($convo);
