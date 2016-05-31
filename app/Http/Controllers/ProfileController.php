@@ -44,32 +44,32 @@ class ProfileController extends Controller
 
     public function update(Request $request, user $user)
     {
-        // $this->validate($request, [
-        //     'name' => 'required|max:255',
-        //     'email' => 'required|email|max:255',
-        //     'address' => 'required|max:255',
-        //     'postnr' => 'required|digits:4|exists:posts,postnr',
-        //     'phonenumber' => 'required|digits:8'
-        // ]);
-        //
-        // if($request->hasFile("image")) {
-        //     $image = $request->file("image");
-        //     $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
-        //     Image::make($image)->save( public_path("/resources/user_images/" . $filename) );
-        // } else {
-        //     $filename = $user->userImage;
-        // }
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'address' => 'required|max:255',
+            'postnr' => 'required|digits:4|exists:posts,postnr',
+            'phonenumber' => 'required|digits:8'
+        ]);
 
-        // user::where('id', $user->id)->update([  'id' => $user->id,
-        //                                         'name' => $request->name,
-        //                                         'email' => $request->email,
-        //                                         'address' => $request->address,
-        //                                         'postnr' => $request->postnr,
-        //                                         'phonenumber' => $request->phonenumber,
-        //                                         'userImage' => $filename]
-        //                                     );
-return view('profile');
-        return "test";
+        if($request->hasFile("image")) {
+            $image = $request->file("image");
+            $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save( public_path("/resources/user_images/" . $filename) );
+        } else {
+            $filename = $user->userImage;
+        }
+
+        user::where('id', $user->id)->update([  'id' => $user->id,
+                                                'name' => $request->name,
+                                                'email' => $request->email,
+                                                'address' => $request->address,
+                                                'postnr' => $request->postnr,
+                                                'phonenumber' => $request->phonenumber,
+                                                'userImage' => $filename]
+                                            );
+
+        return redirect('profile');
         // return back();
     }
 
