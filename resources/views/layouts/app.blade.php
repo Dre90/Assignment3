@@ -48,7 +48,7 @@
                     @else
                         <li><a href="{{ url('/') }}">Frontpage</a></li>
                         <li><a href="{{ url('add_item') }}">Add item</a></li>
-                        <li><a href="{{ url('items') }}">Items</a></li>
+                        <li><a href="{{ url('items') }}">My items</a></li>
                         <li><a href="{{ url('inbox') }}">Inbox</a></li>
                     @endif
                 </ul>
@@ -66,7 +66,6 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('profile') }}">Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
@@ -82,6 +81,8 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
+
+    <script src="{{  asset('js/script.js')  }}"></script>
+
 </body>
 </html>

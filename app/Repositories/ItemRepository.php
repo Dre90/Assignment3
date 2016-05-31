@@ -16,7 +16,7 @@ class ItemRepository
     public function forUserActive(User $user)
     {
         return $user->item()
-                    ->orderBy('created_at', 'asc')
+                    ->orderBy('created_at', 'DESC')
                     ->where('givenAway', 0)
                     ->get();
     }
@@ -24,7 +24,7 @@ class ItemRepository
     public function forUserGivenAway(User $user)
     {
         return $user->item()
-                    ->orderBy('created_at', 'asc')
+                    ->orderBy('created_at', 'DESC')
                     ->where('givenAway', 1)
                     ->get();
     }
