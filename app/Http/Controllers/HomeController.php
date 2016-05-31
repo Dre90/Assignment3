@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $items = Item::orderBy('created_at', 'DESC')
+        $items = Item::orderBy('updated_at', 'DESC')
                     ->where('givenAway', 0)
                     ->get();
 
@@ -28,7 +28,7 @@ class HomeController extends Controller
 
     public function showcategory()
     {
-        
+
     }
 
 

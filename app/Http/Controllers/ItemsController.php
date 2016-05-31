@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Image;
 use App\Item;
+use App\Category;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Repositories\ItemRepository;
@@ -89,8 +91,31 @@ class ItemsController extends Controller
     */
     public function edit(Request $request, Item $item)
     {
-      $this->authorize('edit', $item);
+        $this->authorize('edit', $item);
 
-      return view('edit_item');
+        $categories = Category::all();
+      return view('edit_item', compact('item', 'categories'));
+    }
+
+    public function save(Request $request, Item $item)
+    {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'category' => 'required',
+            'description' => 'required'
+        ]);
+
+        if($request->hasFile("image")) {
+            $image = $request->file("image");
+            $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->save( public_path("/resources/item_images/" . $filename) );
+        } else {
+            $filename = $item->itemImage;
+        }
+
+
+        Item::where('id', $item->id)->update(['id' => $item->id, 'title' => $request->title, 'categoryid' => $request->category, 'description' => $request->description, 'itemImage' => $filename]);
+
+        return back();
     }
 }

@@ -28,6 +28,9 @@ Route::delete('items/{item}', 'ItemsController@destroy');
 Route::patch('items/{item}', 'ItemsController@update');
 Route::get('items/{item}/edit', 'ItemsController@edit');
 
+// Edit items
+Route::patch('items/{item}/save', 'ItemsController@save');
+
 // Inbox
 Route::get('inbox', 'InboxController@index');
 Route::get('inbox/{conversation}', 'InboxController@show');
