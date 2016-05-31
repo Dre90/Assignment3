@@ -47,11 +47,31 @@
                 </div>
                 <h2 class="text-center">{{ $item->user->name }}</h2>
 
-                <form>
-                    <textarea class="form-control message" rows="4"></textarea>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Send message</button>
-                </form>
-
+                @if((Auth::check()) && ($item->user->id === Auth::user()->id))
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <h4>This is your item.</h4>
+                    </div>
+                  </div>
+                @elseif ((Auth::check()) && (count($convoInterested) !== 0))
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <h4>You allready have a conversation about this item.</h4>
+                      <a href="{{ url('inbox/' . $convoInterested[0]->id) }}"><h4>Take me there.</h4></a>
+                    </div>
+                  </div>
+                @elseif((Auth::check()) && (count($convoInterested) === 0))
+                  <form>
+                      <textarea class="form-control message" rows="4"></textarea>
+                      <button type="button" class="btn btn-primary btn-lg btn-block">Send message</button>
+                  </form>
+                @else
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <h4>You need to be logged in to send a message about this item.</h4>
+                    </div>
+                  </div>
+                @endif
 
             </div>
 

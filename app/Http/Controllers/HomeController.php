@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Item;
 use App\Category;
+use App\Conversation;
 use App\User;
 
 use App\Http\Requests;
@@ -23,12 +25,16 @@ class HomeController extends Controller
 
     public function show(Item $item)
     {
-        return view('item', compact('item'));
+      if(Auth::user()){
+        $convoInterested = Conversation::where('interestedId', Auth::user()->id)->get();
+      }
+
+        return view('item', compact('item', 'convoInterested'));
     }
 
     public function showcategory()
     {
-        
+
     }
 
 
