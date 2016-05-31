@@ -6,6 +6,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <form class="form-horizontal" role="form" method="POST" action="{{ url('edit_profile') }}">
+            
               {{ method_field('PATCH') }}
               {{ csrf_field() }}
               <!-- <div class="form-group"> -->
@@ -23,7 +24,7 @@
                       <!-- Row for Name and Edit profile-->
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                           <div class="col-md-12">
-                              <input type="text" class="form-control" name="name" value="">
+                              <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}">
 
                               @if ($errors->has('name'))
                                   <span class="help-block">

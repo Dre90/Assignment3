@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\User;
 use Image;
 
+
 class ProfileController extends Controller
 {
     /**
@@ -17,6 +18,7 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -32,11 +34,13 @@ class ProfileController extends Controller
     public function edit()
     {
         return view('edit_profile');
+
     }
+
 
     public function update(Request $request)
     {
-      $update_user = new user;
+      $update_user = new User;
         $update_user->name = $request->name;
         $update_user->address = $request->address;
         $update_user->postnr = $request->postnr;
@@ -47,4 +51,6 @@ class ProfileController extends Controller
 
         return back();
     }
+
+
 }
