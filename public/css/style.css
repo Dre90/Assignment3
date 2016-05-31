@@ -52,6 +52,7 @@ body {
 }
 
 .description {
+    white-space: pre-wrap;
     margin-top: 20px;
     margin-bottom: 20px;
 }

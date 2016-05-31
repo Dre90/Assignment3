@@ -60,6 +60,6 @@ class AddItemController extends Controller
 
         $new_item->save();
 
-        return back();
+        return \Redirect::to('items');
     }
 }

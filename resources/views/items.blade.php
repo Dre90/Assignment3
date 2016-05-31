@@ -36,7 +36,7 @@
                   <tbody>
                     @foreach($activeItems as $item)
                     <tr>
-                      <td>{{ $item->title }}</td>
+                      <td><a href="item/{{$item->id}}"> {{ $item->title }} </a></td>
                       <td>
                         <form action="{{ url('items/'.$item->id) }}" method="POST"><!-- Give Away item button -->
                           {{ csrf_field() }}

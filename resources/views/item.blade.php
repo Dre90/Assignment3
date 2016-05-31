@@ -28,12 +28,7 @@
             </div>
 
 
-                <div class="description border-buttom">
-                    <p>
-                        {{ $item->description }}
-                    </p>
-                    <p>
-                </div>
+                <div class="description border-buttom">{{$item->description}}</div>
 
                 <div class="border-buttom">
                     <?php
