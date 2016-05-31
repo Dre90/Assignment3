@@ -22,29 +22,54 @@
       @foreach ($conversationMess as $conversation)
         @foreach ($conversation->message as $message)
           @if($message->userId === Auth::user()->id)
-            <div class="row">
+            <div class="row conversationMessageCurrentUser">
               <div class="col-md-12">
-                <p><b>You: </b></p>
-                <p>{{ $message->body }}</p>
+                <div class="row">
+                  <p class="col-md-2 text-right"><b>You: </b></p>
+                  <p class="col-md-9">{{ $message->body }}</p>
+                </div>
               </div>
             </div>
           @elseif($conversation->interestedUser->id === $message->userId)
-            <div class="row">
+            <div class="row conversationMessageOtherUser">
               <div class="col-md-12">
-                <p><b>{{$conversation->interestedUser->name}}: </b></p>
-                <p>{{ $message->body }}</p>
+                <div class="row">
+                  <p class="col-md-2 text-right"><b>{{$conversation->interestedUser->name}}: </b></p>
+                  <p class="col-md-9">{{ $message->body }}</p>
+                </div>
               </div>
             </div>
           @elseif($conversation->ownerUser->id === $message->userId)
-            <div class="row">
+            <div class="row conversationMessageOtherUser">
               <div class="col-md-12">
-                <p><b>{{$conversation->ownerUser->name}}: </b></p>
-                <p>{{ $message->body }}</p>
+                <div class="row">
+                  <p class="col-md-2 text-right"><b>{{$conversation->ownerUser->name}}: </b></p>
+                  <p class="col-md-9">{{ $message->body }}</p>
+                </div>
               </div>
             </div>
           @endif
         @endforeach
       @endforeach
+      <!-- input form for new message -->
+      <form method="POST" action="{{ url('inbox/' . $conversation->id) }}">
+        {{ csrf_field() }}
+        <input type="hidden" name="convId" value="{{ $conversation->id }}">
+        <input type="hidden" name="userId" value="{{ Auth::user()->id }}">
+        <div class="form-group{{ $errors->has('newMessage') ? ' has-error' : '' }}">
+          <textarea class="form-control message" name="newMessage" value="{{ old('newMessage') }}" rows="4"></textarea>
+          @if ($errors->has('newMessage'))
+            <span class="help-block">
+              <strong>{{ $errors->first('newMessage') }}</strong>
+            </span>
+          @endif
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-primary">Reply</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

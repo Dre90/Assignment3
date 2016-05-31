@@ -69,11 +69,18 @@ class InboxController extends Controller
                           ->get();
 
       return view('conversation', compact('conversation', 'conversationMess'));
-      /*
-      $convo = Conversation::where('id', $conversation->id);
-      return '<pre>' . print_r($convo);
-      return view('inbox', compact('conversations'));
-      //return '<pre>' . $Request;
-      */
+    }
+
+    public function store(Request $request)
+    {
+      $this->validate($request, [
+        'convId' => 'required|exists:conversations,id',
+        'userId' => 'required|exists:users,id',
+        'newMessage' => 'required',
+      ]);
+
+
+
+      return back();
     }
 }

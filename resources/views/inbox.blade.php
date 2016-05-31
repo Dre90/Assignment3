@@ -9,7 +9,6 @@
           <div class="list-group">
             @foreach ($conversations as $conversation)
               <form action="{{ url('inbox/' . $conversation->id) }}" method="GET"><!-- Give Away item button -->
-
                 <button type="submit" id="show-conversation-{{ $conversation->id }}" class="btn btn-default col-md-12">
                   <p>Item: {{ $conversation->item->title }}.</p>
                   <!-- if user is owner, show You here -->
