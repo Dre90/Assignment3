@@ -8,19 +8,19 @@
             <form>
                 <div class="radio">
                     <label>
-                        <input onclick="showCustomer(this.value)" type="radio" name="optionsRadios" id="optionsRadios2" value="0" checked>
+                        <input onclick="showCategory(this.value)" type="radio" name="optionsRadios" id="optionsRadios2" value="0" checked>
                         Show all
                     </label>
                 </div>
                 @foreach($categories as $Category)
                     {{-- <div class="radio">
                         <label>
-                            <input onclick="showCustomer(this.value)" type="radio" value="{{ $Category->id }}"> {{ $Category->categoryName }}
+                            <input onclick="showCategory(this.value)" type="radio" value="{{ $Category->id }}"> {{ $Category->categoryName }}
                         </label>
                     </div> --}}
                     <div class="radio">
                         <label>
-                            <input onclick="showCustomer(this.value)" type="radio" name="optionsRadios" id="optionsRadios2" value="{{ $Category->id }}">
+                            <input onclick="showCategory(this.value)" type="radio" name="optionsRadios" id="optionsRadios2" value="{{ $Category->id }}">
                             {{ $Category->categoryName }}
                         </label>
                     </div>
@@ -31,7 +31,7 @@
 <div id="items-grid">
     <div class=" col-md-9" id="items">
         <h1>Items</h1>
-        <div class="row clearfix">
+        <div class="row clearfix" id="items_container">
             @foreach($items as $item)
                 <a href="item/{{$item->id}}">
                     <div class="col-md-4 item-Outerbox">
@@ -79,53 +79,67 @@
 </div>
 
         <script>
-
-        function showCustomer(str) {
-                console.log(str);
+        function showCategory(str) {
+          console.log(str)
                 $.ajax({
                    type: "POST",
                    cache: false,
                    url : "item/{categoryid}",
-                   data: { sem : str },
-                   success: function(data) {
+                   dataType: "html",
+                   data: { catId : str },
+                   success: function(response) {
+                    //parsing the response to javascript objects
+                    var obj = $.parseJSON(response);
+                    var i = 0;
+                    var output = '';
 
+                    //building the new items in the items part of the page
+                    $.each(obj, function() {
+                                //setting time variables for time shown on items
+                                var1 = new Date(this['updated_at']);
+                                var2 = new Date();
+                                dateDiff = new Date(var2 - var1);
+
+                                //calculating time variables
+                                seconds = Math.round(dateDiff/1000);
+                                minutes = Math.round(dateDiff/1000/60);
+                                hours = Math.round(dateDiff/1000/60/60);
+                                days = Math.round(dateDiff/1000/60/60/24);
+
+                                //building the output
+                                output += '<a href="item/' +this['id']+ '">';
+                                  output += '<div class="col-md-4 item-Outerbox">';
+                                    output += '<div class="item-image-box">';
+                                      output += '<img src="resources/item_images/'+this['itemImage']+'" class="img-responsive center-block item-image" alt="'+this['title']+' image" />';
+                                    output += '</div>';
+                                    output += '<div class="">';
+                                      output += '<h2 class="text-center">'+this['title']+'</h2>';
+                                      output += '<span class="pull-right">';
+                                        if(minutes == 0){
+                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+seconds+' sec';
+                                        }else if(hours == 0){
+                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+minutes+' min';
+                                        }else if(days == 0){
+                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+hours+' min';
+                                        }else{
+                                             output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+days+' min';
+                                        }
+                                        output += '</span>';
+                                      output += '</div>';
+                                    output += '</div>';
+                                  output += '</a>';
+
+                                i++;
+                            });
+                    //updating the page
+                    if (output === '') {
+                      $( "#items_container" ).html('<h3>There are no items in this category</h3>');
+                    } else {
+                      $( "#items_container" ).html(output);
+                    }
                    }
                })
             }
-
-        // var optionSelected = $(this).find("option:selected");
-        // semesterSelected  = optionSelected.val();
-        // console.log(semesterSelected);
-
-        // $.ajax({
-        //     type: "POST",
-        //     cache: false,
-        //     url : "rate/units",
-        //     data: { sem : semesterSelected },
-        //     success: function(data) {
-        //         var obj = $.parseJSON(data);
-        //         var i = 0;
-        //         console.log(data.iyo);
-        //
-        //         $.each(obj, function() {
-        //             console.log(this[0]);
-        //             console.log(this[1]);
-        //             console.log(this[2]);
-        //             console.log(this[3]);
-        //             console.log(this[4]);
-        //
-        //             i++;
-        //         });
-        //     }
-        // })
-
-        // .done(function(data) {
-        //     alert('done');
-        // })
-        // .fail(function(jqXHR, ajaxOptions, thrownError) {
-        //     alert('No response from server');
-        // });
-
 </script>
 
     </div>
