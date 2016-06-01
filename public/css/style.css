@@ -111,12 +111,15 @@ body {
 }
 
 /**************************************/
-/*----------Image page style----------*/
+/*----------Inbox page style----------*/
 /**************************************/
-
 .small-item-image {
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
+}
+
+.conversation-box:hover {
+    background-color: #b8b8b8;
 }
 
 /*********************************************/
