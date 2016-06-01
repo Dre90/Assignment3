@@ -49,12 +49,8 @@ class HomeController extends Controller
                     ->where('givenAway', 0)
                     ->get();
       }
-
-
-
-
+      //returning as json objects
       return response()->json($items);
-      //return response()->json($items);
     }
 
 
