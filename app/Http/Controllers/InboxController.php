@@ -57,6 +57,8 @@ class InboxController extends Controller
         $conversations->push($convo);
       }
 
+      $conversations = $conversations->sortByDesc('updated_at');
+
       return view('inbox', compact('conversations'));
     }
 
