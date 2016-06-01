@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,28 +13,28 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $posts = array(
-            ['postnr' => 1001, 'placeName' => 'Oslo'],
-            ['postnr' => 1337, 'placeName' => 'Sandvika'],
-            ['postnr' => 1400, 'placeName' => 'Ski'],
-            ['postnr' => 1501, 'placeName' => 'Moss'],
-            ['postnr' => 1601, 'placeName' => 'Fredrikstad']
+            ['postnr' => 1001, 'placeName' => 'Oslo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['postnr' => 1337, 'placeName' => 'Sandvika', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['postnr' => 1400, 'placeName' => 'Ski', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['postnr' => 1501, 'placeName' => 'Moss', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['postnr' => 1601, 'placeName' => 'Fredrikstad', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
         );
 
         $users = array(
-            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Jongsåsveien 2 F', 'postnr' => 1337 , 'phonenumber' => 12345678, 'userImage' => 'default.jpg'],
-            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Nordbyveien 122', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'default.jpg']
+            ['name' => 'Ola Norman', 'email' => 'test@test.no', 'password' => bcrypt('password'), 'address' => 'Jongsåsveien 2 F', 'postnr' => 1337 , 'phonenumber' => 12345678, 'userImage' => 'default.jpg', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['name' => 'Kari Norman', 'email' => 'test2@test.no', 'password' => bcrypt('password'), 'address' => 'Nordbyveien 122', 'postnr' => 1400, 'phonenumber' => 87654321, 'userImage' => 'default.jpg', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
         );
 
         $categories = array(
-            ['categoryName' => 'Antikviteter og kunst'],
-            ['categoryName' => 'Dyr og utstyr'],
-            ['categoryName' => 'Elektronikk og hvitevarer'],
-            ['categoryName' => 'Fritid, hobby og underholdning'],
-            ['categoryName' => 'Hage, oppussing og hus'],
-            ['categoryName' => 'Klær, kosmetikk og accessoirer'],
-            ['categoryName' => 'Møbler og interiør'],
-            ['categoryName' => 'Sport og friluftsliv'],
-            ['categoryName' => 'Utstyr til bil, båt og MC']
+            ['categoryName' => 'Antiques and art', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Animals and equipment ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Electronics and appliances', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Leisure, hobby and entertainment', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Garden, refurbishment and house', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Clothing, cosmetics and accessories', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Furniture and interior ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Sport and outdoors  ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Car, boat and MC equipment ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
 
         );
 
@@ -44,16 +45,16 @@ class DatabaseSeeder extends Seeder
         );
 
         $conversations = array(
-            ['interestedId' => 2, 'ownerId' => 1, 'itemId' => 1],
-            ['interestedId' => 1, 'ownerId' => 2, 'itemId' => 2]
+            ['interestedId' => 2, 'ownerId' => 1, 'itemId' => 1, 'messageCount' => 2, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['interestedId' => 1, 'ownerId' => 2, 'itemId' => 3, 'messageCount' => 3,  'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
         );
 
         $messages = array(
-            ['body' => 'First sample text in conversation one', 'conversationId' => 1, 'userId' => 1],
-            ['body' => 'Second sample text in conversation one', 'conversationId' => 1, 'userId' => 2],
-            ['body' => 'First sample text in conversation two', 'conversationId' => 2, 'userId' => 2],
-            ['body' => 'Second sample text in conversation two', 'conversationId' => 2, 'userId' => 1],
-            ['body' => 'Third sample text in conversation two', 'conversationId' => 2, 'userId' => 2]
+            ['body' => 'First sample text in conversation one', 'conversationId' => 1, 'userId' => 1, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['body' => 'Second sample text in conversation one', 'conversationId' => 1, 'userId' => 2, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['body' => 'First sample text in conversation two', 'conversationId' => 2, 'userId' => 2, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['body' => 'Second sample text in conversation two', 'conversationId' => 2, 'userId' => 1, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['body' => 'Third sample text in conversation two', 'conversationId' => 2, 'userId' => 2, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
         );
 
         DB::table('messages')->delete();

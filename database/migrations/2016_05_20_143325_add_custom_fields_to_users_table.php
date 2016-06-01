@@ -17,7 +17,7 @@ class AddCustomFieldsToUsersTable extends Migration
           $table->string('address');
           $table->char('postnr', 4)->index();
           $table->integer('phonenumber')->unsigned();
-          $table->string('userImage');
+          $table->string('userImage')->default('default.jpg');
       });
     }
 

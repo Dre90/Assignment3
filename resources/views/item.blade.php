@@ -9,12 +9,6 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <ol class="breadcrumb">
-            <li><a href="#">{{ $item->category->categoryName }}</a></li>
-            <li -class="active">{{ $item->title }}</li>
-        </ol>
-    </div>
     <div class="row ">
         <div class=" col-md-8">
             <div class="item-image-box-item-page">
@@ -47,11 +41,40 @@
                 </div>
                 <h2 class="text-center">{{ $item->user->name }}</h2>
 
-                <form>
-                    <textarea class="form-control message" rows="4"></textarea>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Send message</button>
+                @if((Auth::check()) && ($item->user->id === Auth::user()->id))
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <h4>This is your item.</h4>
+                    </div>
+                  </div>
+                @elseif ((Auth::check()) && (count($convoInterested) !== 0))
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <h4>You allready have a conversation about this item.</h4>
+                      <a href="{{ url('inbox/' . $convoInterested[0]->id) }}"><h4>Take me there.</h4></a>
+                    </div>
+                  </div>
+                @elseif((Auth::check()) && (count($convoInterested) === 0))
+                <form method="POST" action="{{ url('inbox/' . $item->id) . '/create'}}">
+                    {{ csrf_field() }}
+                    <!-- <input type="hidden" name="item" value="{{ $item }}"> -->
+                    <div class="form-group{{ $errors->has('newMessage') ? ' has-error' : '' }}">
+                      <textarea class="form-control message" name="newMessage" value="{{ old('newMessage') }}" rows="4"></textarea>
+                      @if ($errors->has('newMessage'))
+                        <span class="help-block">
+                          <strong>{{ $errors->first('newMessage') }}</strong>
+                        </span>
+                      @endif
+                      <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message</button>
+                    </div>
                 </form>
-
+                @else
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <h4>You need to be logged in to send a message about this item.</h4>
+                    </div>
+                  </div>
+                @endif
 
             </div>
 
