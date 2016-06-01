@@ -5,6 +5,13 @@
   <div class="row">
     <div class="col-md-12">
         <div class="row">
+<div class="col-md-12">
+            <a href="{{redirect()->back()->getTargetUrl()}}">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+            </a>
+        </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">
 
                 <h2><a href="{{url('item/')}}/{{$conversation->item->id}}"> {{ $conversation->item->title }}</a></h2>
