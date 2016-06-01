@@ -38,7 +38,7 @@ class HomeController extends Controller
     {
       $catId = $request->catId;
       //gathering the category items
-      if ($catId === 0) {
+      if ($catId === '0') {
         $items = Item::orderBy('updated_at', 'DESC')
                     ->where('givenAway', 0)
                     ->get();

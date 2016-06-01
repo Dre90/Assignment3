@@ -80,7 +80,6 @@
 
         <script>
         function showCategory(str) {
-          console.log(str)
                 $.ajax({
                    type: "POST",
                    cache: false,
@@ -120,9 +119,9 @@
                                         }else if(hours == 0){
                                             output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+minutes+' min';
                                         }else if(days == 0){
-                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+hours+' min';
+                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+hours+' h';
                                         }else{
-                                             output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+days+' min';
+                                             output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+days+' d';
                                         }
                                         output += '</span>';
                                       output += '</div>';
