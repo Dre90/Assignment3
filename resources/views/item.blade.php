@@ -9,12 +9,6 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <ol class="breadcrumb">
-            <li><a href="#">{{ $item->category->categoryName }}</a></li>
-            <li -class="active">{{ $item->title }}</li>
-        </ol>
-    </div>
     <div class="row ">
         <div class=" col-md-8">
             <div class="item-image-box-item-page">

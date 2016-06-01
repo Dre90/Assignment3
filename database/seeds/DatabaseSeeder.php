@@ -26,15 +26,15 @@ class DatabaseSeeder extends Seeder
         );
 
         $categories = array(
-            ['categoryName' => 'Antikviteter og kunst', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['categoryName' => 'Dyr og utstyr', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['categoryName' => 'Elektronikk og hvitevarer', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['categoryName' => 'Fritid, hobby og underholdning', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['categoryName' => 'Hage, oppussing og hus', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['categoryName' => 'Klær, kosmetikk og accessoirer', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['categoryName' => 'Møbler og interiør', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['categoryName' => 'Sport og friluftsliv', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['categoryName' => 'Utstyr til bil, båt og MC', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
+            ['categoryName' => 'Antiques and art', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Animals and equipment ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Electronics and appliances', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Leisure, hobby and entertainment', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Garden, refurbishment and house', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Clothing, cosmetics and accessories', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Furniture and interior ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Sport and outdoors  ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['categoryName' => 'Car, boat and MC equipment ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
 
         );
 
