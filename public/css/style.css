@@ -1,5 +1,6 @@
 body {
     font-family: 'Lato';
+    font-size: 15px;
 }
 
 .fa-btn {
@@ -113,14 +114,44 @@ body {
 /*----------Conversation page style----------*/
 /*********************************************/
 .conversationMessageCurrentUser {
-  border-top: 1px solid #dddddd;
   padding-bottom: 1em;
 }
 
-.conversationMessageOtherUser {
-  border-top: 1px solid #dddddd;
-  padding-bottom: 1em;
+.MessageCurrentUser {
+    background-color: #bae0ff;
+    -webkit-border-radius: 25px;
+-webkit-border-top-right-radius: 0;
+-moz-border-radius: 25px;
+-moz-border-radius-topright: 0;
+border-radius: 25px;
+border-top-right-radius: 0;
+    padding: 15px;
 }
+
+.conversationMessageOtherUser {
+
+  padding-bottom: 1em;
+
+}
+
+.MessageOtherUser {
+    background-color: #cbcbcb;
+    -webkit-border-radius: 25px;
+-webkit-border-top-left-radius: 0;
+-moz-border-radius: 25px;
+-moz-border-radius-topleft: 0;
+border-radius: 25px;
+border-top-left-radius: 0;
+    padding: 15px;
+}
+
+.message-dato{
+    color: #999;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
 
 /*********************************************/
 /*----------Inbox page style----------*/
