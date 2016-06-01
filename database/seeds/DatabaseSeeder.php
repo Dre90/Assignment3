@@ -45,8 +45,8 @@ class DatabaseSeeder extends Seeder
         );
 
         $conversations = array(
-            ['interestedId' => 2, 'ownerId' => 1, 'itemId' => 1, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['interestedId' => 1, 'ownerId' => 2, 'itemId' => 3, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
+            ['interestedId' => 2, 'ownerId' => 1, 'itemId' => 1, 'messageCount' => 2, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['interestedId' => 1, 'ownerId' => 2, 'itemId' => 3, 'messageCount' => 3,  'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
         );
 
         $messages = array(

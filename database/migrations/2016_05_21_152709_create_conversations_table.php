@@ -18,6 +18,7 @@ class CreateConversationsTable extends Migration
             $table->integer('ownerId')->unsigned()->index();
             $table->integer('itemId')->unsigned()->index();
             $table->timestamps();
+            $table->integer('messageCount')->unsigned();
 
             $table->unique(['interestedId', 'ownerId', 'itemId']);
         });
