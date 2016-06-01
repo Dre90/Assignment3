@@ -11,67 +11,32 @@
             <div class="col-md-12">
                 <!-- all conversations -->
                 <h1 class="text-center">Your Conversations</h1>
-                {{-- <ul class="list-group"> --}}
                 <div class="list-group">
                     @foreach ($conversations as $conversation)
-                        {{-- <a href="{{ url('inbox/' . $conversation->id) }}" class="list-group-item ">
-                            {{-- <li class="list-group-item conversation-box"> --}}
-                                {{-- <p>
-                                    Item: {{ $conversation->item->title }}
-                                </p>
-
+                        <a href="{{ url('inbox/' . $conversation->id) }}" class="list-group-item">
+                            <h4 class="list-group-item-heading">Item: {{ $conversation->item->title }}</h4>
+                            <p class="list-group-item-text">
                                 <!-- if user is owner, show You here -->
+                                @if($conversation->ownerUser->id === Auth::user()->id)
 
-                                  @if($conversation->ownerUser->id === Auth::user()->id)
-                                    {{-- You.</p> --}}
-                                  {{-- @else
+                                @else
 
-                                    <p>Owner: {{ $conversation->ownerUser->name }}</p>
-                                  @endif --}}
+                                  <p> <strong>Owner: </strong> {{ $conversation->ownerUser->name }}</p>
+                                @endif
 
-                                  <!-- if user is interestedUser, show You here -->
-                                  {{-- @if($conversation->interestedUser->id === Auth::user()->id)
-                                    {{-- You.</p> --}}
-                                  {{-- @else --}}
+                                <!-- if user is interestedUser, show You here -->
+                                @if($conversation->interestedUser->id === Auth::user()->id)
 
-                                    {{-- <p>Interested: {{ $conversation->interestedUser->name }}</p>
-                                  @endif
-                                  <strong>Last received message</strong>
-                                  <p>{{ $conversation->updated_at }}</p> --}}
-                              {{-- </li> --}}
-                          {{-- </a> --}}
+                                @else
 
+                                  <p> <strong>Interested: </strong> {{ $conversation->interestedUser->name }}</p>
+                                @endif
 
-                              <a href="{{ url('inbox/' . $conversation->id) }}" class="list-group-item">
-                                  <h4 class="list-group-item-heading">Item: {{ $conversation->item->title }}</h4>
-                                  <p class="list-group-item-text">
-                                      <!-- if user is owner, show You here -->
-
-                                    @if($conversation->ownerUser->id === Auth::user()->id)
-                                      {{-- You.</p> --}}
-                                    @else
-
-                                      <p> <strong>Owner: </strong> {{ $conversation->ownerUser->name }}</p>
-                                    @endif
-
-                                    <!-- if user is interestedUser, show You here -->
-                                    @if($conversation->interestedUser->id === Auth::user()->id)
-                                      {{-- You.</p> --}}
-                                    @else
-
-                                      <p> <strong>Interested: </strong> {{ $conversation->interestedUser->name }}</p>
-                                    @endif
-
-
-                                </p>
-
-                                <strong>Last received message:</strong> {{ $conversation->updated_at }}
-
-                              </a>
-
+                            </p>
+                            <strong>Last received message:</strong> {{ $conversation->updated_at }}
+                        </a>
                     @endforeach
-                    </div>
-                {{-- </ul> --}}
+                </div>
             </div>
         @endif
     </div>
