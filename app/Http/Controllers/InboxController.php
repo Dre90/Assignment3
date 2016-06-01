@@ -57,6 +57,8 @@ class InboxController extends Controller
         $conversations->push($convo);
       }
 
+      $conversations = $conversations->sortByDesc('updated_at');
+
       return view('inbox', compact('conversations'));
     }
 
@@ -75,7 +77,7 @@ class InboxController extends Controller
 
     public function store(Request $request, Conversation $conversation)
     {
-      //authorize the new message
+      //authorize, validate and save the new message
       $this->authorize('store', $conversation);
 
       $this->validate($request, [
@@ -90,6 +92,11 @@ class InboxController extends Controller
       $newMessage->body = $request->newMessage;
 
       $newMessage->save();
+
+      //updating the messageCount on the related conversation
+      $conv = Conversation::where('id', $request->convId)->get();
+      $conv[0]->messageCount += 1;
+      $conv[0]->save();
 
       return \Redirect::to('inbox/' . $request->convId);
     }
@@ -113,6 +120,7 @@ class InboxController extends Controller
         $newConvo->interestedId = $request->user()->id;
         $newConvo->ownerId = $item->userId;
         $newConvo->itemId = $item->id;
+        $newConvo->messageCount = 1;
 
         $newConvo->save();
 
@@ -137,26 +145,5 @@ class InboxController extends Controller
         //should be part of the validation form? custom validator maybe?
         //TODO: add feedback
       }
-
-
-
-
-
-
-              //hent convo id
-
-              //lagre ny melding med convoid, userId
-
-
-
-
-      // if (($item->userId === $request->user()->id) || (count($checkDB) !== 0)) {
-      //   //not ok
-      //   return 'Not ok to start new conversation.';
-      // } else {
-      //
-      //
-      // }
-      //return \Redirect::to('inbox');
     }
 }
