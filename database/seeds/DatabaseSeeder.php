@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
 
         $conversations = array(
             ['interestedId' => 2, 'ownerId' => 1, 'itemId' => 1],
-            ['interestedId' => 1, 'ownerId' => 2, 'itemId' => 2]
+            ['interestedId' => 1, 'ownerId' => 2, 'itemId' => 3]
         );
 
         $messages = array(
