@@ -26,7 +26,9 @@ class HomeController extends Controller
     public function show(Item $item)
     {
       if(Auth::user()){
-        $convoInterested = Conversation::where('interestedId', Auth::user()->id)->get();
+        $convoInterested = Conversation::where('interestedId', Auth::user()->id)->
+                                        where('ownerId', $item->userId)->
+                                        where('itemId', $item->id)->get();
       }
 
         return view('item', compact('item', 'convoInterested'));
