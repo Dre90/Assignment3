@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Conversation;
 use App\Message;
-
+use App\Item;
 use App\User;
 
 use App\Http\Requests;
@@ -92,5 +92,71 @@ class InboxController extends Controller
       $newMessage->save();
 
       return \Redirect::to('inbox/' . $request->convId);
+    }
+
+    public function create(Request $request, Conversation $conversation, Item $item)
+    {
+      $this->validate($request, [
+        'newMessage' => 'required',
+      ]);
+
+      //check if unique ids in conversations table
+      $checkDB = count(Conversation::where('interestedId', $request->user()->id)->
+                                  where('ownerId', $item->userId)->
+                                  where('itemId', $item->id)->get());
+
+      //processing the data and storing in db
+      if ($checkDB === 0){
+        //user id, item id and item owner id are unique
+        //creating new conversation
+        $newConvo = new Conversation;
+        $newConvo->interestedId = $request->user()->id;
+        $newConvo->ownerId = $item->userId;
+        $newConvo->itemId = $item->id;
+
+        $newConvo->save();
+
+        //getting the new conversation id
+        $conv = Conversation::where('interestedId', $request->user()->id)->
+                                    where('ownerId', $item->userId)->
+                                    where('itemId', $item->id)->get();
+
+        //return $conv[0]->id;
+        //creating the new message in the new conversation
+        $newMessage = new Message;
+        $newMessage->conversationId = $conv[0]->id;
+        $newMessage->userId = $request->user()->id;
+        $newMessage->body = $request->newMessage;
+
+        $newMessage->save();
+
+        return \Redirect::to('inbox/' . $conv[0]->id);
+
+      } else {
+        //not ok
+        //should be part of the validation form? custom validator maybe?
+        //TODO: add feedback
+      }
+
+
+
+
+
+
+              //hent convo id
+
+              //lagre ny melding med convoid, userId
+
+
+
+
+      // if (($item->userId === $request->user()->id) || (count($checkDB) !== 0)) {
+      //   //not ok
+      //   return 'Not ok to start new conversation.';
+      // } else {
+      //
+      //
+      // }
+      //return \Redirect::to('inbox');
     }
 }
