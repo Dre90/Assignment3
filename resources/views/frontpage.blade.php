@@ -78,17 +78,49 @@
 
 </div>
 
+        <!-- test div -->
+        <div id="testDiv">
+          test
+        </div>
+
         <script>
 
         function showCustomer(str) {
-                console.log(str);
+          console.log(str)
                 $.ajax({
                    type: "POST",
                    cache: false,
                    url : "item/{categoryid}",
-                   data: { sem : str },
-                   success: function(data) {
+                   dataType: "html",
+                   data: { catId : str },
+                   success: function(response) {
 
+                    var obj = $.parseJSON(response);
+                    console.log(obj)
+                    var i = 0;
+                            console.log(response.iyo);
+
+                    var output = null;
+
+                    $.each(obj, function() {
+                                console.log(this['id']);
+                                console.log(this['categoryId']);
+                                console.log(this['created_at']);
+                                console.log(this['description']);
+                                console.log(this['itemImage']);
+                                console.log(this['givenAway']);
+                                console.log(this['title']);
+                                console.log(this['updated_at']);
+                                console.log(this['userId']);
+
+
+                                //TODO: bygg output her
+
+
+                                i++;
+                            });
+
+                     $( "#testDiv" ).html = '<p>This is a test</p>';
                    }
                })
             }

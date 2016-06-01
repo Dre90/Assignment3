@@ -34,9 +34,27 @@ class HomeController extends Controller
         return view('item', compact('item', 'convoInterested'));
     }
 
-    public function showcategory()
+    public function showcategory(Request $request)
     {
+      $catId = $request->catId;
+      //gathering the category items
+      if ($catId === 0) {
+        $items = Item::orderBy('updated_at', 'DESC')
+                    ->where('givenAway', 0)
+                    ->get();
+      } else {
+        $cat = Category::where('id', $catId)->get();
+        $items = Item::orderBy('updated_at', 'DESC')
+                    ->where('categoryId', $catId)
+                    ->where('givenAway', 0)
+                    ->get();
+      }
 
+
+
+
+      return response()->json($items);
+      //return response()->json($items);
     }
 
 
