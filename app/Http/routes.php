@@ -33,8 +33,10 @@ Route::patch('items/{item}/save', 'ItemsController@save');
 
 // Inbox
 Route::get('inbox', 'InboxController@index');
+Route::post('inbox/{item}/create', 'InboxController@create');
 Route::get('inbox/{conversation}', 'InboxController@show');
 Route::post('inbox/{conversation}', 'InboxController@store');
+
 
 // Profile
 Route::get('profile', 'ProfileController@index');
