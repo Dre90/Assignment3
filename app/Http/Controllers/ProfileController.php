@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\User;
 use Image;
 use Auth;
+use Hash;
 
 class ProfileController extends Controller
 {
@@ -36,7 +37,6 @@ class ProfileController extends Controller
         $loggedInUser = Auth::user()->id;
         $user = user::where('id', $loggedInUser)->get()->first();
 
-        // return $user;
         return view('edit_profile', compact('user'));
 
     }
@@ -89,5 +89,24 @@ class ProfileController extends Controller
       return redirect('profile');
     }
 
+    public function updatePW(Request $request){
+      $this->validate($request, [
+          'oldPassword' => 'bail|required|min:6',
+          'newPassword' => 'required|min:6|confirmed',
+          'newPassword_confirmation' => 'required|min:6',
+      ]);
 
+      $user = Auth::user();
+
+      if ($request->newPassword = $request->newPassword_confirmation) {
+        if (Hash::check($request->oldPassword, $user->password)) {
+          $user->fill([
+            'password' => Hash::make($request->newPassword)
+          ])->save();
+
+
+          return redirect('profile');
+        }
+      }
+    }
 }

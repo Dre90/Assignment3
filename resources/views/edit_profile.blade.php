@@ -123,6 +123,62 @@
 
 
             </form>
+            <!-- changing password -->
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/profile/edit') }}">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
+
+
+
+                <div class="form-group{{ $errors->has('oldPassword') ? ' has-error' : '' }}">
+                    <label class="control-label">Old Password</label>
+
+                    <div>
+                        <input type="password" class="form-control" name="oldPassword">
+
+                        @if ($errors->has('oldPassword'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('oldPassword') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('newPassword') ? ' has-error' : '' }}">
+                    <label class="control-label">New Password</label>
+
+                    <div>
+                        <input type="password" class="form-control" name="newPassword">
+
+                        @if ($errors->has('newPassword'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('newPassword') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('newPassword_confirmation') ? ' has-error' : '' }}">
+                    <label class="control-label">Confirm New Password</label>
+                    <div>
+                        <input type="password" class="form-control" name="newPassword_confirmation">
+
+                        @if ($errors->has('newPassword_confirmation'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('newPassword_confirmation') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-btn fa-refresh"></i>Reset Password
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
 
         <div class="col-md-2"></div>
