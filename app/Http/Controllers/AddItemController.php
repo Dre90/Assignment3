@@ -37,7 +37,7 @@ class AddItemController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|max:23',
+            'title' => 'required|max:22',
             'category' => 'required',
             'description' => 'required',
             'image' => 'max:8000|image|required',
