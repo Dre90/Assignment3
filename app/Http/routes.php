@@ -15,6 +15,7 @@ Route::auth();
 
 // Frontpage
 Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 Route::post('item/{categoryid}', 'HomeController@showcategory');
 Route::get('item/{item}', 'HomeController@show');
 
