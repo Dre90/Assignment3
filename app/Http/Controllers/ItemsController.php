@@ -104,13 +104,19 @@ class ItemsController extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'category' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'image' => 'max:8000|image',
         ]);
 
         if($request->hasFile("image")) {
-            $image = $request->file("image");
+            $image = $request->image;
             $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save( public_path("/resources/item_images/" . $filename) );
+            $img = Image::make($image)
+                ->resize(null, 1000, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })
+                ->save( public_path("/resources/item_images/" . $filename) );
         } else {
             $filename = $item->itemImage;
         }
@@ -119,8 +125,8 @@ class ItemsController extends Controller
                                                 'title' => $request->title,
                                                 'categoryid' => $request->category,
                                                 'description' => $request->description,
-                                                'itemImage' => $filename]
-                                            );
-        return back();
+                                                'itemImage' => $filename
+                                            ]);
+        return \Redirect::to('items');
     }
 }

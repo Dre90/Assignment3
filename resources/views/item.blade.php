@@ -21,7 +21,7 @@
                 <h4><small>Category:</small> {{ $item->category->categoryName }}</h4>
             </div>
 
-
+                <h3>Description</h3>
                 <div class="description border-buttom">{{$item->description}}</div>
 
                 <div class="border-buttom">

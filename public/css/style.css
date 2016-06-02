@@ -18,6 +18,10 @@ body {
     border-radius: 50%;
 }
 
+.cancel-button {
+    margin-left: 15px;
+}
+
 /*******************************/
 /*----------Frontpage----------*/
 /*******************************/
@@ -63,6 +67,7 @@ body {
     white-space: pre-wrap;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 .userInfo {
     border-bottom: solid 1px #c7c7c7;

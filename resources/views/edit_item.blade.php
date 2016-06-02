@@ -13,7 +13,9 @@
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
                 <div class="save-button">
+                    <a class="btn btn-default pull-right cancel-button" href="{{redirect()->back()->getTargetUrl()}}">Cancel</a>
                     <button type="submit" class="btn btn-primary pull-right">Save changes</button>
+
                 </div>
                 <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title">Title</label>

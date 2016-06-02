@@ -17,6 +17,11 @@
                   <div class="col-md-5">
                       <img src="{{url('resources/user_images/')}}/{{ $user->userImage }}" class="img-responsive profilePicture" alt="{{ $user->name }} profile picture" />
                       <input type="file" name="image" id="image" value="{{ old('image') }}">
+                      @if ($errors->has('image'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('image') }}</strong>
+                          </span>
+                      @endif
                   </div>
 
 
@@ -82,10 +87,15 @@
                               @endif
                       </div>
 
+
+
                       <!-- Save changes button -->
-                        <button type="submit" class="btn btn-primary">
+                      <a class="btn btn-default cancel-button pull-right" href="{{redirect()->back()->getTargetUrl()}}">Cancel</a>
+                        <button type="submit" class="btn btn-primary pull-right">
                             <i class="fa fa-btn fa-user"></i>Save changes
                         </button>
+
+
             </form>
         </div>
 

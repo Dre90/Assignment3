@@ -54,14 +54,20 @@ class ProfileController extends Controller
           'email' => 'required|email|max:255',
           'address' => 'required|max:255',
           'postnr' => 'required|digits:4|exists:posts,postnr',
-          'phonenumber' => 'required|digits:8'
+          'phonenumber' => 'required|digits:8',
+          'image' => 'max:8000|image',
       ]);
 
       //processing the request based on changed image or not
       if($request->hasFile("image")) {
-          $image = $request->file("image");
+          $image = $request->image;
           $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
-          Image::make($image)->save( public_path("/resources/user_images/" . $filename) );
+          $img = Image::make($image)
+              ->resize(null, 1000, function ($constraint) {
+                  $constraint->aspectRatio();
+                  $constraint->upsize();
+              })
+              ->save( public_path("/resources/item_images/" . $filename) );
 
           User::where('id', $user->id)->update([  'name' => $request->name,
                                                   'email' => $request->email,
