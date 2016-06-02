@@ -19,7 +19,12 @@
                 </div>
                 <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" id="title" value="{{ $item->title }}">
+
+                    @if (old('title'))
+                      <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}">
+                    @else
+                      <input type="text" name="title" class="form-control" id="title" value="{{ $item->title }}">
+                    @endif
 
                     @if ($errors->has('title'))
                         <span class="help-block">
@@ -30,12 +35,14 @@
                 </div>
                 <div class="form-group {{ $errors->has('category') ? ' has-error' : '' }}">
                     <label for="category">Category</label>
+
                     <select class="form-control" name="category" >
                         <option value="{{ $item->category->id }}">{{ $item->category->categoryName }}</option>
                         @foreach($categories as $Category)
-                            <option value="{{ $Category->id }}">{{ $Category->categoryName }}</option>
+                            <option value="{{ $Category->id }}"@if(old('category') == $Category->id ) {{ 'selected' }} @endif>{{ $Category->categoryName }}</option>
                           @endforeach
                     </select>
+
                     @if ($errors->has('category'))
                         <span class="help-block">
                             <strong>{{ $errors->first('category') }}</strong>
@@ -45,7 +52,14 @@
 
                 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                     <label for="description">Description</label>
-                    <textarea name="description" class="form-control" id="description" rows="10">{{$item->description}}</textarea>
+
+                    @if (old('description'))
+                      <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}">
+                      <textarea name="description" class="form-control" id="description" rows="10">{{ old('description') }}</textarea>
+                    @else
+                      <textarea name="description" class="form-control" id="description" rows="10">{{$item->description}}</textarea>
+                    @endif
+
                     @if ($errors->has('description'))
                         <span class="help-block">
                             <strong>{{ $errors->first('description') }}</strong>
