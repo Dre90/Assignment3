@@ -99,6 +99,8 @@ class ItemsController extends Controller
 
     public function save(Request $request, Item $item)
     {
+        $this->authorize('save', $item);
+
         $this->validate($request, [
             'title' => 'required|max:255',
             'category' => 'required',

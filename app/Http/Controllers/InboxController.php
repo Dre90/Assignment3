@@ -143,6 +143,7 @@ class InboxController extends Controller
       } else {
         //not ok
         //should be part of the validation form? custom validator maybe?
+        //will never be shown during normal operation.
         //TODO: add feedback
       }
     }

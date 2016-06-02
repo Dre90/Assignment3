@@ -31,4 +31,9 @@ class ItemsPolicy
     {
         return $user->id === $item->userId;
     }
+
+    public function save(User $user, Item $item)
+    {
+        return $user->id === $item->userId;
+    }
 }
