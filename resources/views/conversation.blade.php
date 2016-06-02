@@ -59,7 +59,7 @@
 
                     </div>
                     <div class="col-md-2">
-                        <img src="{{url('resources/user_images/')}}/{{$conversation->interestedUser->userImage }}" class="small-profilePicture img-circle" alt="profile picture" />
+                        <img src="{{url('resources/user_images/')}}/{{Auth::user()->userImage }}" class="small-profilePicture img-circle" alt="profile picture" />
                             You
                     </div>
                 </div>
@@ -84,7 +84,7 @@
             <div class="conversationMessageOtherUser">
                 <div class="row">
                     <div class="col-md-2 text-right">
-                        <img src="{{url('resources/user_images/')}}/{{$conversation->interestedUser->userImage }}" class="small-profilePicture img-circle" alt="profile picture" />
+                        <img src="{{url('resources/user_images/')}}/{{$conversation->ownerUser->userImage }}" class="small-profilePicture img-circle" alt="profile picture" />
                         {{$conversation->ownerUser->name}}
                     </div>
                     <div class="col-md-7 MessageOtherUser">
