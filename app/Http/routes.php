@@ -42,5 +42,5 @@ Route::post('inbox/{conversation}', 'InboxController@store');
 Route::get('profile', 'ProfileController@index');
 
 // Edit profile
-Route::post('profile/edit', 'ProfileController@edit');
-Route::patch('profile/update', 'ProfileController@update');
+Route::get('profile/edit', 'ProfileController@edit');
+Route::put('profile/edit', 'ProfileController@update');

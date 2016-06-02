@@ -18,7 +18,7 @@
                   <h2 class="profileHeader">{{ Auth::user()->name }}</h2>
                 </div>
                 <div class="col-md-5 col-lg-5" align="right">
-                    <form class="" action="{{ url('profile/edit') }}" method="post">
+                    <form class="" action="{{ url('profile/edit') }}" method="get">
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-btn fa-user"></i>Edit profile

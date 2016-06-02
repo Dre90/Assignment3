@@ -42,35 +42,45 @@ class ProfileController extends Controller
     }
 
 
-    public function update(Request $request, user $user)
+    public function update(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'address' => 'required|max:255',
-            'postnr' => 'required|digits:4|exists:posts,postnr',
-            'phonenumber' => 'required|digits:8'
-        ]);
+      //getting the auth user's info
+      $loggedInUser = Auth::user()->id;
+      $user = user::where('id', $loggedInUser)->get()->first();
 
-        if($request->hasFile("image")) {
-            $image = $request->file("image");
-            $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save( public_path("/resources/user_images/" . $filename) );
-        } else {
-            $filename = $user->userImage;
-        }
+      //validating input form
+      $this->validate($request, [
+          'name' => 'required|max:255',
+          'email' => 'required|email|max:255',
+          'address' => 'required|max:255',
+          'postnr' => 'required|digits:4|exists:posts,postnr',
+          'phonenumber' => 'required|digits:8'
+      ]);
 
-        user::where('id', $user->id)->update([  'id' => $user->id,
-                                                'name' => $request->name,
-                                                'email' => $request->email,
-                                                'address' => $request->address,
-                                                'postnr' => $request->postnr,
-                                                'phonenumber' => $request->phonenumber,
-                                                'userImage' => $filename]
-                                            );
+      //processing the request based on changed image or not
+      if($request->hasFile("image")) {
+          $image = $request->file("image");
+          $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
+          Image::make($image)->save( public_path("/resources/user_images/" . $filename) );
 
-        return redirect('profile');
-        // return back();
+          User::where('id', $user->id)->update([  'name' => $request->name,
+                                                  'email' => $request->email,
+                                                  'address' => $request->address,
+                                                  'postnr' => $request->postnr,
+                                                  'phonenumber' => $request->phonenumber,
+                                                  'userImage' => $filename
+                                              ]);
+      } else {
+          User::where('id', $user->id)->update([  //'id' => $user->id,
+                                                  'name' => $request->name,
+                                                  'email' => $request->email,
+                                                  'address' => $request->address,
+                                                  'postnr' => $request->postnr,
+                                                  'phonenumber' => $request->phonenumber,
+                                              ]);
+      }
+
+      return redirect('profile');
     }
 
 
