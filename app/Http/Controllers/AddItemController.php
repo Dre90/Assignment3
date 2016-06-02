@@ -37,7 +37,7 @@ class AddItemController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|max:255',
+            'title' => 'required|max:23',
             'category' => 'required',
             'description' => 'required',
             'image' => 'max:8000|image|required',
@@ -62,7 +62,7 @@ class AddItemController extends Controller
         $new_item->userId = $request->_userid;
 
         $new_item->save();
-        
+
         return \Redirect::to('items');
     }
 }

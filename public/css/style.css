@@ -38,17 +38,8 @@ body {
     width: auto;
     height: 100%;
 }
-/*@media screen and (min-width: 992px ) {
-    .item-image {
-        max-height: 150px;
-    }
- }
 
- @media screen and (min-width: 1200px ) {
-     .item-image {
-         max-height: 200px;
-     }
-  }*/
+
 /*******************************/
 /*----------Item page----------*/
 /*******************************/
