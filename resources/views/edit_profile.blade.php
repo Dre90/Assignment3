@@ -17,6 +17,7 @@
                   <div class="col-md-5">
                       <img src="{{url('resources/user_images/')}}/{{ $user->userImage }}" class="img-responsive profilePicture" alt="{{ $user->name }} profile picture" />
                       <input type="file" name="image" id="image" value="{{ old('image') }}">
+
                       @if ($errors->has('image'))
                           <span class="help-block">
                               <strong>{{ $errors->first('image') }}</strong>
@@ -29,44 +30,64 @@
                     <div class="col-md-5">
                       <!-- Row for Name and Edit profile-->
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                              <label for="name">Name</label>
-                              <input type="text" class="form-control" name="name" value="{{ $user->name }}">
+                            <label for="name">Name</label>
 
-                              @if ($errors->has('name'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('name') }}</strong>
-                                  </span>
-                              @endif
+                            @if (old('name'))
+                              <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                            @else
+                              <input type="text" class="form-control" name="name" value="{{ $user->name }}">
+                            @endif
+
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                       </div>
 
 
                       <!-- Rows for Address -->
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address">Address:</label>
-                            <input type="text" class="form-control" name="address" value="{{ $user->address }}">
 
-                              @if ($errors->has('address'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('address') }}</strong>
-                                  </span>
-                              @endif
+                            @if (old('address'))
+                              <input type="text" class="form-control" name="address" value="{{ old('address') }}">
+                            @else
+                              <input type="text" class="form-control" name="address" value="{{ $user->address }}">
+                            @endif
+
+                            @if ($errors->has('address'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('address') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <div class="form-group{{ $errors->has('postnr') ? ' has-error' : '' }}">
                           <label for="postnr">Postnumber:</label>
-                              <input type="text" class="form-control" name="postnr" value="{{ $user->postnr }}">
 
-                              @if ($errors->has('postnr'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('postnr') }}</strong>
-                                  </span>
-                              @endif
+                            @if (old('postnr'))
+                              <input type="text" class="form-control" name="postnr" value="{{ old('postnr') }}">
+                            @else
+                              <input type="text" class="form-control" name="postnr" value="{{ $user->postnr }}">
+                            @endif
+
+                            @if ($errors->has('postnr'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('postnr') }}</strong>
+                                </span>
+                            @endif
                          </div>
 
                       <!-- Rows for Phonenumber -->
                       <div class="form-group{{ $errors->has('phonenumber') ? ' has-error' : '' }}">
                           <label for="phonenumber">Phonenumber:</label>
-                              <input type="text" class="form-control" name="phonenumber" value="{{ $user->phonenumber }}">
+
+                              @if (old('phonenumber'))
+                                <input type="text" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}">
+                              @else
+                                <input type="text" class="form-control" name="phonenumber" value="{{ $user->phonenumber }}">
+                              @endif
 
                               @if ($errors->has('phonenumber'))
                                   <span class="help-block">
@@ -78,7 +99,12 @@
                       <!-- Rows for E-mail -->
                       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" >E-Mail Address:</label>
-                            <input type="email" class="form-control" name="email" value="{{ $user->email }}">
+
+                              @if (old('email'))
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                              @else
+                                <input type="email" class="form-control" name="email" value="{{ $user->email }}">
+                              @endif
 
                               @if ($errors->has('email'))
                                   <span class="help-block">
