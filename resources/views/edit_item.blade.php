@@ -1,22 +1,30 @@
 @extends('layouts.app')
-{{-- @if(old('title') == $Item->title ) @endif
-@if(old('category') == $Category->id ) {{ 'selected' }} @endif
-@if(old('description') == $Item->description ) @endif--}}
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
+            <h1>Edit item</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
 
             <form enctype="multipart/form-data" method="POST" action="save">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
                 <div class="save-button">
-                    <button type="submit" class="btn btn-primary pull-right">Save</button>
+                    <a class="btn btn-default pull-right cancel-button" href="{{redirect()->back()->getTargetUrl()}}">Cancel</a>
+                    <button type="submit" class="btn btn-primary pull-right">Save changes</button>
 
                 </div>
                 <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" id="title" value="{{ $item->title }}">
+
+                    @if (old('title'))
+                      <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}">
+                    @else
+                      <input type="text" name="title" class="form-control" id="title" value="{{ $item->title }}">
+                    @endif
 
                     @if ($errors->has('title'))
                         <span class="help-block">
@@ -27,12 +35,14 @@
                 </div>
                 <div class="form-group {{ $errors->has('category') ? ' has-error' : '' }}">
                     <label for="category">Category</label>
+
                     <select class="form-control" name="category" >
                         <option value="{{ $item->category->id }}">{{ $item->category->categoryName }}</option>
                         @foreach($categories as $Category)
-                            <option value="{{ $Category->id }}">{{ $Category->categoryName }}</option>
+                            <option value="{{ $Category->id }}"@if(old('category') == $Category->id ) {{ 'selected' }} @endif>{{ $Category->categoryName }}</option>
                           @endforeach
                     </select>
+
                     @if ($errors->has('category'))
                         <span class="help-block">
                             <strong>{{ $errors->first('category') }}</strong>
@@ -42,7 +52,13 @@
 
                 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                     <label for="description">Description</label>
-                    <textarea name="description" class="form-control" id="description" rows="10">{{$item->description}}</textarea>
+
+                    @if (old('description'))
+                      <textarea name="description" class="form-control" id="description" rows="10">{{ old('description') }}</textarea>
+                    @else
+                      <textarea name="description" class="form-control" id="description" rows="10">{{$item->description}}</textarea>
+                    @endif
+
                     @if ($errors->has('description'))
                         <span class="help-block">
                             <strong>{{ $errors->first('description') }}</strong>
@@ -59,10 +75,6 @@
                     @endif
                 </div>
 
-                <div class="save-button">
-                    <button type="submit" class="btn btn-primary pull-right">Save</button>
-
-                </div>
                 <div class="form-group">
                     <label>Current image</label>
                     <div class="item-image-box-item-page">
@@ -76,6 +88,7 @@
 
             </form>
         </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 @endsection

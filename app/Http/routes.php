@@ -45,3 +45,4 @@ Route::get('profile', 'ProfileController@index');
 // Edit profile
 Route::get('profile/edit', 'ProfileController@edit');
 Route::put('profile/edit', 'ProfileController@update');
+Route::patch('profile/edit', 'ProfileController@updatePW');

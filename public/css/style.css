@@ -18,11 +18,16 @@ body {
     border-radius: 50%;
 }
 
+.cancel-button {
+    margin-left: 15px;
+}
+
 /*******************************/
 /*----------Frontpage----------*/
 /*******************************/
 .item-Outerbox {
     border: 1px solid #eee;
+    padding-bottom: 15px;
 }
 
 .item-image-box {
@@ -34,17 +39,8 @@ body {
     width: auto;
     height: 100%;
 }
-/*@media screen and (min-width: 992px ) {
-    .item-image {
-        max-height: 150px;
-    }
- }
 
- @media screen and (min-width: 1200px ) {
-     .item-image {
-         max-height: 200px;
-     }
-  }*/
+
 /*******************************/
 /*----------Item page----------*/
 /*******************************/
@@ -63,6 +59,7 @@ body {
     white-space: pre-wrap;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 .userInfo {
     border-bottom: solid 1px #c7c7c7;
@@ -95,6 +92,11 @@ body {
   padding: 15px 0px;
 }
 
+.edit-profilePicture{
+    width: 200px;
+    height: auto;
+}
+
 .profileHeader{
     margin: 0px;
     padding: 15px 0px;
@@ -108,6 +110,10 @@ body {
 .profileInfo {
   padding-bottom: 10px;
   font-size: 1.2em;
+}
+
+.pass-reset{
+    margin-top: 20px;
 }
 
 /**************************************/

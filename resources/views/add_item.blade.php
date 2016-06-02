@@ -3,7 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
+            <h1>Add item</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
             <form enctype="multipart/form-data" method="POST" action="add_item/new_item">
                 {{ csrf_field() }}
                 <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
@@ -34,7 +39,7 @@
 
                 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                     <label for="description">Description</label>
-                    <textarea name="description" class="form-control" id="description" rows="10" value="{{ old('description') }}"></textarea>
+                    <textarea name="description" class="form-control" id="description" rows="10">{{old('description')}}</textarea>
                     @if ($errors->has('description'))
                         <span class="help-block">
                             <strong>{{ $errors->first('description') }}</strong>
@@ -44,7 +49,7 @@
 
                 <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
                     <label for="image">Upload a image</label>
-                    <input type="file" name="image" id="image" value="{{ old('image') }}">
+                    <input type="file" name="image" id="image">
                     @if ($errors->has('image'))
                         <span class="help-block">
                             <strong>{{ $errors->first('image') }}</strong>
@@ -57,6 +62,7 @@
 
             </form>
         </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 @endsection

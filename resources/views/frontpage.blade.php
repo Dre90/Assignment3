@@ -13,11 +13,6 @@
                     </label>
                 </div>
                 @foreach($categories as $Category)
-                    {{-- <div class="radio">
-                        <label>
-                            <input onclick="showCategory(this.value)" type="radio" value="{{ $Category->id }}"> {{ $Category->categoryName }}
-                        </label>
-                    </div> --}}
                     <div class="radio">
                         <label>
                             <input onclick="showCategory(this.value)" type="radio" name="optionsRadios" id="optionsRadios2" value="{{ $Category->id }}">
@@ -43,7 +38,6 @@
                                 $var1 = $item->updated_at;
                                 $var2 = date('Y-m-d H:i:s');
 
-
                                 $date = new DateTime( $var1);
                                 $diff = $date->diff(new DateTime( $var2));
 
@@ -56,7 +50,7 @@
                                 $days = $diff->format("%a d");
                              ?>
 
-                            <h2 class="text-center">{{ $item->title }}</h2>
+                            <h3 class="text-center">{{ $item->title }}</h3>
                                 <span class="pull-right">
                                     @if($minutesDiff == 0)
                                         <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{ $seconds }}
@@ -112,7 +106,7 @@
                                       output += '<img src="resources/item_images/'+this['itemImage']+'" class="img-responsive center-block item-image" alt="'+this['title']+' image" />';
                                     output += '</div>';
                                     output += '<div class="">';
-                                      output += '<h2 class="text-center">'+this['title']+'</h2>';
+                                      output += '<h3 class="text-center">'+this['title']+'</h3>';
                                       output += '<span class="pull-right">';
                                         if(minutes == 0){
                                             output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> '+seconds+' sec';

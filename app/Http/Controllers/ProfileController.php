@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\User;
 use Image;
 use Auth;
+use Hash;
 
 class ProfileController extends Controller
 {
@@ -36,7 +37,6 @@ class ProfileController extends Controller
         $loggedInUser = Auth::user()->id;
         $user = user::where('id', $loggedInUser)->get()->first();
 
-        // return $user;
         return view('edit_profile', compact('user'));
 
     }
@@ -54,14 +54,20 @@ class ProfileController extends Controller
           'email' => 'required|email|max:255',
           'address' => 'required|max:255',
           'postnr' => 'required|digits:4|exists:posts,postnr',
-          'phonenumber' => 'required|digits:8'
+          'phonenumber' => 'required|digits:8',
+          'image' => 'max:8000|image',
       ]);
 
       //processing the request based on changed image or not
       if($request->hasFile("image")) {
-          $image = $request->file("image");
+          $image = $request->image;
           $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
-          Image::make($image)->save( public_path("/resources/user_images/" . $filename) );
+          $img = Image::make($image)
+              ->resize(null, 1000, function ($constraint) {
+                  $constraint->aspectRatio();
+                  $constraint->upsize();
+              })
+              ->save( public_path("/resources/item_images/" . $filename) );
 
           User::where('id', $user->id)->update([  'name' => $request->name,
                                                   'email' => $request->email,
@@ -83,5 +89,24 @@ class ProfileController extends Controller
       return redirect('profile');
     }
 
+    public function updatePW(Request $request){
+      $this->validate($request, [
+          'oldPassword' => 'bail|required|min:6',
+          'newPassword' => 'required|min:6|confirmed',
+          'newPassword_confirmation' => 'required|min:6',
+      ]);
 
+      $user = Auth::user();
+
+      if ($request->newPassword = $request->newPassword_confirmation) {
+        if (Hash::check($request->oldPassword, $user->password)) {
+          $user->fill([
+            'password' => Hash::make($request->newPassword)
+          ])->save();
+
+
+          return redirect('profile');
+        }
+      }
+    }
 }

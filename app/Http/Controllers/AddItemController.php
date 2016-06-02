@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
+use App\Http\Requests;
 use App\Category;
 use App\Item;
 use Image;
 
-use Illuminate\Http\Request;
 
-use App\Http\Requests;
 
 
 class AddItemController extends Controller
@@ -37,17 +37,22 @@ class AddItemController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|max:255',
+            'title' => 'required|max:22',
             'category' => 'required',
             'description' => 'required',
-            'image' => 'required|image',
+            'image' => 'max:8000|image|required',
         ]);
 
-        if($request->hasFile("image")) {
-            $image = $request->file("image");
-            $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save( public_path("/resources/item_images/" . $filename) );
-        }
+
+        $image = $request->image;
+        $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $img = Image::make($image)
+            ->resize(null, 1000, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })
+            ->save( public_path("/resources/item_images/" . $filename) );
+
 
         $new_item = new Item;
         $new_item->title = $request->title;

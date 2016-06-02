@@ -59,7 +59,9 @@ class InboxController extends Controller
 
       $conversations = $conversations->sortByDesc('updated_at');
 
-      return view('inbox', compact('conversations'));
+      $conCount = count($conversations);
+
+      return view('inbox', compact('conversations','conCount'));
     }
 
     public function show(Conversation $conversation)
