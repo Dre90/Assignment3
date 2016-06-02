@@ -96,8 +96,8 @@ body {
 }
 
 .profileHeader{
-  margin: 0px;
-  padding: 15px 0px;
+    margin: 0px;
+    padding: 15px 0px;
 }
 
 .profileLabel {
@@ -126,7 +126,7 @@ body {
 /*----------Conversation page style----------*/
 /*********************************************/
 .conversationMessageCurrentUser {
-  padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .MessageCurrentUser {
@@ -141,7 +141,7 @@ body {
 }
 
 .conversationMessageOtherUser {
-  padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .MessageOtherUser {
