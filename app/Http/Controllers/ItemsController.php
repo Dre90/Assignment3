@@ -99,6 +99,8 @@ class ItemsController extends Controller
 
     public function save(Request $request, Item $item)
     {
+        $this->authorize('save', $item);
+
         $this->validate($request, [
             'title' => 'required|max:255',
             'category' => 'required',
@@ -113,9 +115,12 @@ class ItemsController extends Controller
             $filename = $item->itemImage;
         }
 
-
-        Item::where('id', $item->id)->update(['id' => $item->id, 'title' => $request->title, 'categoryid' => $request->category, 'description' => $request->description, 'itemImage' => $filename]);
-
+        Item::where('id', $item->id)->update([  'id' => $item->id,
+                                                'title' => $request->title,
+                                                'categoryid' => $request->category,
+                                                'description' => $request->description,
+                                                'itemImage' => $filename]
+                                            );
         return back();
     }
 }

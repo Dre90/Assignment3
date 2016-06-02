@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\User;
+use Image;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -15,6 +18,7 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -27,8 +31,57 @@ class ProfileController extends Controller
         return view('profile');
     }
 
-    public function edit()
+    public function edit(user $user)
     {
-        return view('edit_profile');
+        $loggedInUser = Auth::user()->id;
+        $user = user::where('id', $loggedInUser)->get()->first();
+
+        // return $user;
+        return view('edit_profile', compact('user'));
+
     }
+
+
+    public function update(Request $request)
+    {
+      //getting the auth user's info
+      $loggedInUser = Auth::user()->id;
+      $user = user::where('id', $loggedInUser)->get()->first();
+
+      //validating input form
+      $this->validate($request, [
+          'name' => 'required|max:255',
+          'email' => 'required|email|max:255',
+          'address' => 'required|max:255',
+          'postnr' => 'required|digits:4|exists:posts,postnr',
+          'phonenumber' => 'required|digits:8'
+      ]);
+
+      //processing the request based on changed image or not
+      if($request->hasFile("image")) {
+          $image = $request->file("image");
+          $filename = rand(1000,9000) . '_' . time() . '.' . $image->getClientOriginalExtension();
+          Image::make($image)->save( public_path("/resources/user_images/" . $filename) );
+
+          User::where('id', $user->id)->update([  'name' => $request->name,
+                                                  'email' => $request->email,
+                                                  'address' => $request->address,
+                                                  'postnr' => $request->postnr,
+                                                  'phonenumber' => $request->phonenumber,
+                                                  'userImage' => $filename
+                                              ]);
+      } else {
+          User::where('id', $user->id)->update([  //'id' => $user->id,
+                                                  'name' => $request->name,
+                                                  'email' => $request->email,
+                                                  'address' => $request->address,
+                                                  'postnr' => $request->postnr,
+                                                  'phonenumber' => $request->phonenumber,
+                                              ]);
+      }
+
+      return redirect('profile');
+    }
+
+
 }

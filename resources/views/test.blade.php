@@ -4,8 +4,8 @@
 
 <div class="container">
     <div class="row">
-            <form enctype="multipart/form-data" role="form" method="POST" action="{{ url('/profile/edit') }}" >
-              {{ method_field('PUT') }}
+            <form enctype="multipart/form-data" method="POST" action="update" >
+              {{ method_field('PATCH') }}
               {{ csrf_field() }}
 
                   <!-- Profile picture -->
