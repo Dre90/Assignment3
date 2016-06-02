@@ -115,13 +115,13 @@
                                       output += '<h2 class="text-center">'+this['title']+'</h2>';
                                       output += '<span class="pull-right">';
                                         if(minutes == 0){
-                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+seconds+' sec';
+                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> '+seconds+' sec';
                                         }else if(hours == 0){
-                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+minutes+' min';
+                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> '+minutes+' min';
                                         }else if(days == 0){
-                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+hours+' h';
+                                            output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> '+hours+' h';
                                         }else{
-                                             output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span>'+days+' d';
+                                             output += '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> '+days+' d';
                                         }
                                         output += '</span>';
                                       output += '</div>';
