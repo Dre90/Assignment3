@@ -54,7 +54,6 @@
                     <label for="description">Description</label>
 
                     @if (old('description'))
-                      <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}">
                       <textarea name="description" class="form-control" id="description" rows="10">{{ old('description') }}</textarea>
                     @else
                       <textarea name="description" class="form-control" id="description" rows="10">{{$item->description}}</textarea>
