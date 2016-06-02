@@ -91,6 +91,11 @@ body {
   padding: 15px 0px;
 }
 
+.edit-profilePicture{
+    width: 200px;
+    height: auto;
+}
+
 .profileHeader{
     margin: 0px;
     padding: 15px 0px;
@@ -104,6 +109,10 @@ body {
 .profileInfo {
   padding-bottom: 10px;
   font-size: 1.2em;
+}
+
+.pass-reset{
+    margin-top: 20px;
 }
 
 /**************************************/
