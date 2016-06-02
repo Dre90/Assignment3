@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
-        @if(count($conversations) === 0)
-            <div class="col-md-12 text-center">
+        @if($conCount === 0)
+            <div class="col-md-12">
                 <h1>You do not have any conversations.</h1>
             </div>
         @else
             <div class="col-md-12">
                 <!-- all conversations -->
-                <h1 class="text-center">Your Conversations</h1>
+                <h1>Your have {{ $conCount }} Conversations</h1>
                 <div class="list-group">
                     @foreach ($conversations as $conversation)
                         <a href="{{ url('inbox/' . $conversation->id) }}" class="list-group-item">

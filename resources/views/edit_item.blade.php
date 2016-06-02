@@ -1,18 +1,19 @@
 @extends('layouts.app')
-{{-- @if(old('title') == $Item->title ) @endif
-@if(old('category') == $Category->id ) {{ 'selected' }} @endif
-@if(old('description') == $Item->description ) @endif--}}
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
+            <h1>Edit item</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
 
             <form enctype="multipart/form-data" method="POST" action="save">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
                 <div class="save-button">
-                    <button type="submit" class="btn btn-primary pull-right">Save</button>
-
+                    <button type="submit" class="btn btn-primary pull-right">Save changes</button>
                 </div>
                 <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title">Title</label>
@@ -59,10 +60,6 @@
                     @endif
                 </div>
 
-                <div class="save-button">
-                    <button type="submit" class="btn btn-primary pull-right">Save</button>
-
-                </div>
                 <div class="form-group">
                     <label>Current image</label>
                     <div class="item-image-box-item-page">
@@ -76,6 +73,7 @@
 
             </form>
         </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 @endsection
